@@ -1,0 +1,494 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EEA355611A39ABF300606646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355601A39ABF300606646 /* AppDelegate.swift */; };
+		EEA355631A39ABF300606646 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355621A39ABF300606646 /* ViewController.swift */; };
+		EEA355651A39ABF300606646 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA355641A39ABF300606646 /* Images.xcassets */; };
+		EEA355681A39ABF400606646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA355661A39ABF400606646 /* Main.storyboard */; };
+		EEA355741A39ABF400606646 /* OAuth2AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355731A39ABF400606646 /* OAuth2AppTests.swift */; };
+		EEA3558B1A39ACA100606646 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA355841A39AC6500606646 /* OAuth2.framework */; };
+		EEA3558D1A39D84F00606646 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = EEA3558C1A39D84F00606646 /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EEA3556E1A39ABF400606646 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA355531A39ABF300606646 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EEA3555A1A39ABF300606646;
+			remoteInfo = OAuth2App;
+		};
+		EEA355831A39AC6500606646 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEE209471942772800736F1A;
+			remoteInfo = OAuth2;
+		};
+		EEA355851A39AC6500606646 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEDB8624193FAAE500C4EEA1;
+			remoteInfo = OAuth2iOS;
+		};
+		EEA355871A39AC6500606646 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEE209A219427DFE00736F1A;
+			remoteInfo = "OAuth2 Tests";
+		};
+		EEA355891A39AC9700606646 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EEE209461942772800736F1A;
+			remoteInfo = OAuth2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EEA3555B1A39ABF300606646 /* OAuth2App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuth2App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEA3555F1A39ABF300606646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEA355601A39ABF300606646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EEA355621A39ABF300606646 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EEA355641A39ABF300606646 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EEA355671A39ABF400606646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EEA3556D1A39ABF400606646 /* OAuth2AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OAuth2AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEA355721A39ABF400606646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEA355731A39ABF400606646 /* OAuth2AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2AppTests.swift; sourceTree = "<group>"; };
+		EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuth2.xcodeproj; path = OAuth2/OAuth2.xcodeproj; sourceTree = "<group>"; };
+		EEA3558C1A39D84F00606646 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EEA355581A39ABF300606646 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEA3558B1A39ACA100606646 /* OAuth2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEA3556A1A39ABF400606646 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EEA355521A39ABF300606646 = {
+			isa = PBXGroup;
+			children = (
+				EEA3558C1A39D84F00606646 /* README.md */,
+				EEA3555D1A39ABF300606646 /* OAuth2App */,
+				EEA355701A39ABF400606646 /* OAuth2AppTests */,
+				EEA3555C1A39ABF300606646 /* Products */,
+				EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		EEA3555C1A39ABF300606646 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EEA3555B1A39ABF300606646 /* OAuth2App.app */,
+				EEA3556D1A39ABF400606646 /* OAuth2AppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EEA3555D1A39ABF300606646 /* OAuth2App */ = {
+			isa = PBXGroup;
+			children = (
+				EEA355601A39ABF300606646 /* AppDelegate.swift */,
+				EEA355621A39ABF300606646 /* ViewController.swift */,
+				EEA355641A39ABF300606646 /* Images.xcassets */,
+				EEA355661A39ABF400606646 /* Main.storyboard */,
+				EEA3555E1A39ABF300606646 /* Supporting Files */,
+			);
+			path = OAuth2App;
+			sourceTree = "<group>";
+		};
+		EEA3555E1A39ABF300606646 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEA3555F1A39ABF300606646 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EEA355701A39ABF400606646 /* OAuth2AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				EEA355731A39ABF400606646 /* OAuth2AppTests.swift */,
+				EEA355711A39ABF400606646 /* Supporting Files */,
+			);
+			path = OAuth2AppTests;
+			sourceTree = "<group>";
+		};
+		EEA355711A39ABF400606646 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEA355721A39ABF400606646 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EEA3557E1A39AC6500606646 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EEA355841A39AC6500606646 /* OAuth2.framework */,
+				EEA355861A39AC6500606646 /* OAuth2iOS.framework */,
+				EEA355881A39AC6500606646 /* OAuth2 Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EEA3555A1A39ABF300606646 /* OAuth2App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEA355771A39ABF400606646 /* Build configuration list for PBXNativeTarget "OAuth2App" */;
+			buildPhases = (
+				EEA355571A39ABF300606646 /* Sources */,
+				EEA355581A39ABF300606646 /* Frameworks */,
+				EEA355591A39ABF300606646 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EEA3558A1A39AC9700606646 /* PBXTargetDependency */,
+			);
+			name = OAuth2App;
+			productName = OAuth2App;
+			productReference = EEA3555B1A39ABF300606646 /* OAuth2App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EEA3556C1A39ABF400606646 /* OAuth2AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEA3557A1A39ABF400606646 /* Build configuration list for PBXNativeTarget "OAuth2AppTests" */;
+			buildPhases = (
+				EEA355691A39ABF400606646 /* Sources */,
+				EEA3556A1A39ABF400606646 /* Frameworks */,
+				EEA3556B1A39ABF400606646 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EEA3556F1A39ABF400606646 /* PBXTargetDependency */,
+			);
+			name = OAuth2AppTests;
+			productName = OAuth2AppTests;
+			productReference = EEA3556D1A39ABF400606646 /* OAuth2AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EEA355531A39ABF300606646 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = Ossus;
+				TargetAttributes = {
+					EEA3555A1A39ABF300606646 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					EEA3556C1A39ABF400606646 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = EEA3555A1A39ABF300606646;
+					};
+				};
+			};
+			buildConfigurationList = EEA355561A39ABF300606646 /* Build configuration list for PBXProject "OAuth2App" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EEA355521A39ABF300606646;
+			productRefGroup = EEA3555C1A39ABF300606646 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EEA3557E1A39AC6500606646 /* Products */;
+					ProjectRef = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				EEA3555A1A39ABF300606646 /* OAuth2App */,
+				EEA3556C1A39ABF400606646 /* OAuth2AppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EEA355841A39AC6500606646 /* OAuth2.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OAuth2.framework;
+			remoteRef = EEA355831A39AC6500606646 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA355861A39AC6500606646 /* OAuth2iOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OAuth2iOS.framework;
+			remoteRef = EEA355851A39AC6500606646 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EEA355881A39AC6500606646 /* OAuth2 Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "OAuth2 Tests.xctest";
+			remoteRef = EEA355871A39AC6500606646 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EEA355591A39ABF300606646 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEA355651A39ABF300606646 /* Images.xcassets in Resources */,
+				EEA355681A39ABF400606646 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEA3556B1A39ABF400606646 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EEA355571A39ABF300606646 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEA3558D1A39D84F00606646 /* README.md in Sources */,
+				EEA355631A39ABF300606646 /* ViewController.swift in Sources */,
+				EEA355611A39ABF300606646 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEA355691A39ABF400606646 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEA355741A39ABF400606646 /* OAuth2AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EEA3556F1A39ABF400606646 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EEA3555A1A39ABF300606646 /* OAuth2App */;
+			targetProxy = EEA3556E1A39ABF400606646 /* PBXContainerItemProxy */;
+		};
+		EEA3558A1A39AC9700606646 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OAuth2;
+			targetProxy = EEA355891A39AC9700606646 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EEA355661A39ABF400606646 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EEA355671A39ABF400606646 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EEA355751A39ABF400606646 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EEA355761A39ABF400606646 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EEA355781A39ABF400606646 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = OAuth2App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EEA355791A39ABF400606646 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = OAuth2App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EEA3557B1A39ABF400606646 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = OAuth2AppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OAuth2App.app/Contents/MacOS/OAuth2App";
+			};
+			name = Debug;
+		};
+		EEA3557C1A39ABF400606646 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = OAuth2AppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OAuth2App.app/Contents/MacOS/OAuth2App";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EEA355561A39ABF300606646 /* Build configuration list for PBXProject "OAuth2App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEA355751A39ABF400606646 /* Debug */,
+				EEA355761A39ABF400606646 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEA355771A39ABF400606646 /* Build configuration list for PBXNativeTarget "OAuth2App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEA355781A39ABF400606646 /* Debug */,
+				EEA355791A39ABF400606646 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EEA3557A1A39ABF400606646 /* Build configuration list for PBXNativeTarget "OAuth2AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEA3557B1A39ABF400606646 /* Debug */,
+				EEA3557C1A39ABF400606646 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EEA355531A39ABF300606646 /* Project object */;
+}
