@@ -479,6 +479,7 @@
 				EEA355791A39ABF400606646 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EEA3557A1A39ABF400606646 /* Build configuration list for PBXNativeTarget "OAuth2AppTests" */ = {
 			isa = XCConfigurationList;
@@ -487,6 +488,7 @@
 				EEA3557C1A39ABF400606646 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
