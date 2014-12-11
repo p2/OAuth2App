@@ -7,19 +7,38 @@
 //
 
 import Cocoa
+import Quartz
+
 
 class ViewController: NSViewController
 {
+	lazy var github = GitHubLoader.sharedInstance
+	
 	@IBOutlet var button: NSButton?
 	
+	@IBOutlet var image: IKImageView?
+	
+	@IBOutlet var label: NSTextField?
+	
+	/** Alert or log the given error message. */
+	func showError(error: NSError) {
+		if let window = self.view.window {
+			NSAlert(error: error).beginSheetModalForWindow(window, completionHandler: nil)
+		}
+		else {
+			NSLog("Error authorizing: \(error.localizedDescription)")
+		}
+	}
+	
+	
+	// MARK: - Authorization
+	
 	@IBAction func requestToken(sender: NSButton?) {
-		if let app = NSApp?.delegate as? AppDelegate {
-			button?.title = "Authorizing..."
-			button?.enabled = false
-			
-			app.requestToken { didFail, error in
-				self.didAuthorize(didFail, error: error)
-			}
+		button?.title = "Authorizing..."
+		button?.enabled = false
+		
+		github.requestToken { didFail, error in
+			self.didAuthorize(didFail, error: error)
 		}
 	}
 	
@@ -33,15 +52,26 @@ class ViewController: NSViewController
 		}
 		else {
 			button?.title = "Authorized!"
+			showUserData()
 		}
 	}
 	
-	func showError(error: NSError) {
-		if let window = self.view.window {
-			NSAlert(error: error).beginSheetModalForWindow(window, completionHandler: nil)
-		}
-		else {
-			NSLog("Error authorizing: \(error.localizedDescription)")
+	
+	// MARK: - Github Requests
+	
+	func showUserData() {
+		github.request("user") { dict, error in
+			if nil != error {
+				self.showError(error!)
+			}
+			else {
+				if let imgURL = dict?["avatar_url"] as? String {
+					self.image!.setImageWithURL(NSURL(string: imgURL)!)
+				}
+				if let username = dict?["name"] as? String {
+					self.label!.stringValue = "Hello there, \(username)!"
+				}
+			}
 		}
 	}
 }
