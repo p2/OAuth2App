@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE0EDD221A39F43F00CE60E7 /* GitHubLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0EDD211A39F43F00CE60E7 /* GitHubLoader.swift */; };
 		EEA355611A39ABF300606646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355601A39ABF300606646 /* AppDelegate.swift */; };
 		EEA355631A39ABF300606646 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355621A39ABF300606646 /* ViewController.swift */; };
 		EEA355651A39ABF300606646 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA355641A39ABF300606646 /* Images.xcassets */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE0EDD211A39F43F00CE60E7 /* GitHubLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubLoader.swift; sourceTree = "<group>"; };
 		EEA3555B1A39ABF300606646 /* OAuth2App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuth2App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA3555F1A39ABF300606646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEA355601A39ABF300606646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				EEA355601A39ABF300606646 /* AppDelegate.swift */,
+				EE0EDD211A39F43F00CE60E7 /* GitHubLoader.swift */,
 				EEA355621A39ABF300606646 /* ViewController.swift */,
 				EEA355641A39ABF300606646 /* Images.xcassets */,
 				EEA355661A39ABF400606646 /* Main.storyboard */,
@@ -287,6 +290,7 @@
 				EEA3558D1A39D84F00606646 /* README.md in Sources */,
 				EEA355631A39ABF300606646 /* ViewController.swift in Sources */,
 				EEA355611A39ABF300606646 /* AppDelegate.swift in Sources */,
+				EE0EDD221A39F43F00CE60E7 /* GitHubLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +483,7 @@
 				EEA355791A39ABF400606646 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EEA3557A1A39ABF400606646 /* Build configuration list for PBXNativeTarget "OAuth2AppTests" */ = {
 			isa = XCConfigurationList;
@@ -487,6 +492,7 @@
 				EEA3557C1A39ABF400606646 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
