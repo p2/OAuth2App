@@ -37,6 +37,7 @@ class GitHubLoader
 	
 	/** Start the OAuth dance. */
 	func requestToken(callback: (wasFailure: Bool, error: NSError?) -> Void) {
+		oauth2.verbose = true
 		oauth2.afterAuthorizeOrFailure = callback
 		
 		let url = oauth2.authorizeURL()
@@ -65,6 +66,13 @@ class GitHubLoader
 			}
 		}
 		task.resume()
+	}
+	
+	
+	// MARK: - Convenience
+	
+	func requestUserdata(callback: ((dict: NSDictionary?, error: NSError?) -> Void)) {
+		request("user", callback: callback)
 	}
 }
 

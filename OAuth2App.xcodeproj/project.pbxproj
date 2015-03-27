@@ -8,15 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		EE0EDD221A39F43F00CE60E7 /* GitHubLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0EDD211A39F43F00CE60E7 /* GitHubLoader.swift */; };
+		EE1391D01AC5A862002C7B18 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA355841A39AC6500606646 /* OAuth2.framework */; };
+		EE1391D11AC5A862002C7B18 /* OAuth2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEA355841A39AC6500606646 /* OAuth2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EE1391DD1AC5BDA8002C7B18 /* RedditLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1391DC1AC5BDA8002C7B18 /* RedditLoader.swift */; };
 		EEA355611A39ABF300606646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355601A39ABF300606646 /* AppDelegate.swift */; };
 		EEA355631A39ABF300606646 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355621A39ABF300606646 /* ViewController.swift */; };
 		EEA355651A39ABF300606646 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA355641A39ABF300606646 /* Images.xcassets */; };
 		EEA355681A39ABF400606646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA355661A39ABF400606646 /* Main.storyboard */; };
 		EEA355741A39ABF400606646 /* OAuth2AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355731A39ABF400606646 /* OAuth2AppTests.swift */; };
-		EEA3558B1A39ACA100606646 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA355841A39AC6500606646 /* OAuth2.framework */; };
+		EEA3558D1A39D84F00606646 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = EEA3558C1A39D84F00606646 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EE1391D21AC5A862002C7B18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EEE209461942772800736F1A;
+			remoteInfo = OAuth2;
+		};
 		EEA3556E1A39ABF400606646 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EEA355531A39ABF300606646 /* Project object */;
@@ -54,8 +64,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		EE1391D41AC5A863002C7B18 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EE1391D11AC5A862002C7B18 /* OAuth2.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		EE0EDD211A39F43F00CE60E7 /* GitHubLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubLoader.swift; sourceTree = "<group>"; };
+		EE1391DC1AC5BDA8002C7B18 /* RedditLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditLoader.swift; sourceTree = "<group>"; };
 		EEA3555B1A39ABF300606646 /* OAuth2App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuth2App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA3555F1A39ABF300606646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEA355601A39ABF300606646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEA3558B1A39ACA100606646 /* OAuth2.framework in Frameworks */,
+				EE1391D01AC5A862002C7B18 /* OAuth2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +138,7 @@
 			children = (
 				EEA355601A39ABF300606646 /* AppDelegate.swift */,
 				EE0EDD211A39F43F00CE60E7 /* GitHubLoader.swift */,
+				EE1391DC1AC5BDA8002C7B18 /* RedditLoader.swift */,
 				EEA355621A39ABF300606646 /* ViewController.swift */,
 				EEA355641A39ABF300606646 /* Images.xcassets */,
 				EEA355661A39ABF400606646 /* Main.storyboard */,
@@ -150,8 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				EEA355841A39AC6500606646 /* OAuth2.framework */,
-				EEA355861A39AC6500606646 /* OAuth2iOS.framework */,
-				EEA355881A39AC6500606646 /* OAuth2 Tests.xctest */,
+				EEA355861A39AC6500606646 /* OAuth2.framework */,
+				EEA355881A39AC6500606646 /* OAuth2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,11 +192,13 @@
 				EEA355571A39ABF300606646 /* Sources */,
 				EEA355581A39ABF300606646 /* Frameworks */,
 				EEA355591A39ABF300606646 /* Resources */,
+				EE1391D41AC5A863002C7B18 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				EEA3558A1A39AC9700606646 /* PBXTargetDependency */,
+				EE1391D31AC5A862002C7B18 /* PBXTargetDependency */,
 			);
 			name = OAuth2App;
 			productName = OAuth2App;
@@ -246,14 +274,14 @@
 			remoteRef = EEA355831A39AC6500606646 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEA355861A39AC6500606646 /* OAuth2iOS.framework */ = {
+		EEA355861A39AC6500606646 /* OAuth2.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = OAuth2.framework;
 			remoteRef = EEA355851A39AC6500606646 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEA355881A39AC6500606646 /* OAuth2 Tests.xctest */ = {
+		EEA355881A39AC6500606646 /* OAuth2Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = OAuth2Tests.xctest;
@@ -286,6 +314,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE1391DD1AC5BDA8002C7B18 /* RedditLoader.swift in Sources */,
+				EEA3558D1A39D84F00606646 /* README.md in Sources */,
 				EEA355631A39ABF300606646 /* ViewController.swift in Sources */,
 				EEA355611A39ABF300606646 /* AppDelegate.swift in Sources */,
 				EE0EDD221A39F43F00CE60E7 /* GitHubLoader.swift in Sources */,
@@ -303,6 +333,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		EE1391D31AC5A862002C7B18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OAuth2;
+			targetProxy = EE1391D21AC5A862002C7B18 /* PBXContainerItemProxy */;
+		};
 		EEA3556F1A39ABF400606646 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EEA3555A1A39ABF300606646 /* OAuth2App */;
@@ -409,6 +444,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = OAuth2App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -420,6 +456,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = OAuth2App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
