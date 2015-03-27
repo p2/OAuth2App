@@ -12,7 +12,8 @@ import Quartz
 
 class ViewController: NSViewController
 {
-	lazy var github = GitHubLoader.sharedInstance
+	lazy var loader = GitHubLoader.sharedInstance
+//	lazy var loader = RedditLoader.sharedInstance
 	
 	@IBOutlet var button: NSButton?
 	
@@ -37,7 +38,7 @@ class ViewController: NSViewController
 		button?.title = "Authorizing..."
 		button?.enabled = false
 		
-		github.requestToken { didFail, error in
+		loader.requestToken { didFail, error in
 			self.didAuthorize(didFail, error: error)
 		}
 	}
@@ -57,10 +58,10 @@ class ViewController: NSViewController
 	}
 	
 	
-	// MARK: - Github Requests
+	// MARK: - Data Requests
 	
 	func showUserData() {
-		github.request("user") { dict, error in
+		loader.requestUserdata() { dict, error in
 			if nil != error {
 				self.showError(error!)
 			}

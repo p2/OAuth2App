@@ -1,8 +1,8 @@
 //
-//  GitHubLoader.swift
+//  RedditLoader.swift
 //  OAuth2App
 //
-//  Created by Pascal Pfiffner on 11/12/14.
+//  Created by Pascal Pfiffner on 3/27/15.
 //  CC0, Public Domain
 //
 
@@ -11,13 +11,13 @@ import OAuth2
 
 
 /**
-	Simple class handling authorization and data requests with GitHub.
+	Simple class handling authorization and data requests with Reddit.
  */
-class GitHubLoader
+class RedditLoader
 {
-	class var sharedInstance: GitHubLoader {
+	class var sharedInstance: RedditLoader {
 		struct Static {
-			static let instance = GitHubLoader()
+			static let instance = RedditLoader()
 		}
 		return Static.instance
 	}
@@ -29,15 +29,15 @@ class GitHubLoader
 	
 	// MARK: - Instance
 	
-	let baseURL = NSURL(string: "https://api.github.com")!
+	let baseURL = NSURL(string: "https://oauth.reddit.com")!
 	
-	lazy var oauth2 = OAuth2CodeGrant(settings: [
-		"client_id": "8ae913c685556e73a16f",                         // yes, this client-id and secret will work!
-		"client_secret": "60d81efcc5293fd1d096854f4eee0764edb2da5d",
-		"authorize_uri": "https://github.com/login/oauth/authorize",
-		"token_uri": "https://github.com/login/oauth/access_token",
-		"scope": "user repo:status",
-		"redirect_uris": ["ppoauthapp://oauth/callback"],            // app has registered this scheme
+	lazy var oauth2 = OAuth2CodeGrantBasicAuth(settings: [
+		"client_id": "IByhV1ZcpTI6zQ",                              // yes, this client-id will work!
+		"client_secret": "",
+		"authorize_uri": "https://www.reddit.com/api/v1/authorize",
+		"token_uri": "https://www.reddit.com/api/v1/access_token",
+		"scope": "identity",                                        // note that reddit uses comma-separated, not space-separated scopes!
+		"redirect_uris": ["ppoauthapp://oauth/callback"],           // app has registered this scheme
 	])
 	
 	/** Start the OAuth dance. */
@@ -49,11 +49,10 @@ class GitHubLoader
 		NSWorkspace.sharedWorkspace().openURL(url)
 	}
 	
-	/** Perform a request against the GitHub API and return decoded JSON or an NSError. */
+	/** Perform a request against the API and return decoded JSON or an NSError. */
 	func request(path: String, callback: ((dict: NSDictionary?, error: NSError?) -> Void)) {
 		let url = baseURL.URLByAppendingPathComponent(path)
 		let req = oauth2.request(forURL: url)
-		req.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
 		
 		let session = NSURLSession.sharedSession()
 		let task = session.dataTaskWithRequest(req) { data, response, error in
@@ -77,7 +76,7 @@ class GitHubLoader
 	// MARK: - Convenience
 	
 	func requestUserdata(callback: ((dict: NSDictionary?, error: NSError?) -> Void)) {
-		request("user", callback: callback)
+		request("api/v1/me", callback: callback)
 	}
 }
 
