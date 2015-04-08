@@ -28,6 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
 			let url = NSURL(string: urlString)
 			if "ppoauthapp" == url?.scheme && "oauth" == url?.host {
 				GitHubLoader.handleRedirectURL(url!)
+				//RedditLoader.handleRedirectURL(url!)
 			}
 		}
 		else {
