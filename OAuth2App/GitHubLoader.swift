@@ -15,15 +15,10 @@ import OAuth2
  */
 class GitHubLoader
 {
-	class var sharedInstance: GitHubLoader {
-		struct Static {
-			static let instance = GitHubLoader()
-		}
-		return Static.instance
-	}
+	static var sharedInstance = GitHubLoader()
 	
 	class func handleRedirectURL(url: NSURL) {
-		self.sharedInstance.oauth2.handleRedirectURL(url)
+		sharedInstance.oauth2.handleRedirectURL(url)
 	}
 	
 	
@@ -58,16 +53,16 @@ class GitHubLoader
 		let session = NSURLSession.sharedSession()
 		let task = session.dataTaskWithRequest(req) { data, response, error in
 			if nil != error {
-				dispatch_async(dispatch_get_main_queue(), {
+				dispatch_async(dispatch_get_main_queue()) {
 					callback(dict: nil, error: error)
-				})
+				}
 			}
 			else {
 				var err: NSError?
 				let dict = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &err) as? NSDictionary
-				dispatch_async(dispatch_get_main_queue(), {
+				dispatch_async(dispatch_get_main_queue()) {
 					callback(dict: dict, error: err)
-				})
+				}
 			}
 		}
 		task.resume()

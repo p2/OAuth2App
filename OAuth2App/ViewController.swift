@@ -13,7 +13,7 @@ import Quartz
 class ViewController: NSViewController
 {
 	lazy var loader = GitHubLoader.sharedInstance
-//	lazy var loader = RedditLoader.sharedInstance
+	//lazy var loader = RedditLoader.sharedInstance
 	
 	@IBOutlet var button: NSButton?
 	
@@ -53,6 +53,7 @@ class ViewController: NSViewController
 		}
 		else {
 			button?.title = "Authorized!"
+			label?.stringValue = "Fetching user data..."
 			showUserData()
 		}
 	}
@@ -67,10 +68,10 @@ class ViewController: NSViewController
 			}
 			else {
 				if let imgURL = dict?["avatar_url"] as? String {
-					self.image!.setImageWithURL(NSURL(string: imgURL)!)
+					self.image?.setImageWithURL(NSURL(string: imgURL)!)
 				}
 				if let username = dict?["name"] as? String {
-					self.label!.stringValue = "Hello there, \(username)!"
+					self.label?.stringValue = "Hello there, \(username)!"
 				}
 			}
 		}

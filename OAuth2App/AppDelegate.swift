@@ -25,10 +25,9 @@ class AppDelegate: NSObject, NSApplicationDelegate
 	/** Gets called when the App launches/opens via URL. */
 	func handleURLEvent(event: NSAppleEventDescriptor, withReply reply: NSAppleEventDescriptor) {
 		if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue {
-			let url = NSURL(string: urlString)
-			if "ppoauthapp" == url?.scheme && "oauth" == url?.host {
-				GitHubLoader.handleRedirectURL(url!)
-				//RedditLoader.handleRedirectURL(url!)
+			if let url = NSURL(string: urlString) where "ppoauthapp" == url.scheme && "oauth" == url.host {
+				GitHubLoader.handleRedirectURL(url)
+				//RedditLoader.handleRedirectURL(url)
 			}
 		}
 		else {
