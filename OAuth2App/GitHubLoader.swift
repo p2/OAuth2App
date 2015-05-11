@@ -33,15 +33,13 @@ class GitHubLoader
 		"token_uri": "https://github.com/login/oauth/access_token",
 		"scope": "user repo:status",
 		"redirect_uris": ["ppoauthapp://oauth/callback"],            // app has registered this scheme
+		"verbose": true,
 	])
 	
 	/** Start the OAuth dance. */
-	func requestToken(callback: (wasFailure: Bool, error: NSError?) -> Void) {
-		oauth2.verbose = true
+	func authorize(callback: (wasFailure: Bool, error: NSError?) -> Void) {
 		oauth2.afterAuthorizeOrFailure = callback
-		
-		let url = oauth2.authorizeURL()
-		NSWorkspace.sharedWorkspace().openURL(url)
+		oauth2.authorize()
 	}
 	
 	/** Perform a request against the GitHub API and return decoded JSON or an NSError. */

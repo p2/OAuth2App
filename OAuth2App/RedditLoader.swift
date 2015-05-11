@@ -33,15 +33,13 @@ class RedditLoader
 		"token_uri": "https://www.reddit.com/api/v1/access_token",
 		"scope": "identity",                                        // note that reddit uses comma-separated, not space-separated scopes!
 		"redirect_uris": ["ppoauthapp://oauth/callback"],           // app has registered this scheme
+		"verbose": true,
 	])
 	
 	/** Start the OAuth dance. */
-	func requestToken(callback: (wasFailure: Bool, error: NSError?) -> Void) {
-		oauth2.verbose = true
+	func authorize(callback: (wasFailure: Bool, error: NSError?) -> Void) {
 		oauth2.afterAuthorizeOrFailure = callback
-		
-		let url = oauth2.authorizeURL()
-		NSWorkspace.sharedWorkspace().openURL(url)
+		oauth2.authorize(params: ["duration": "permanent"])
 	}
 	
 	/** Perform a request against the API and return decoded JSON or an NSError. */
