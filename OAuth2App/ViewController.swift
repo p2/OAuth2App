@@ -38,7 +38,7 @@ class ViewController: NSViewController
 		button?.title = "Authorizing..."
 		button?.enabled = false
 		
-		loader.requestToken { didFail, error in
+		loader.authorize() { didFail, error in
 			self.didAuthorize(didFail, error: error)
 		}
 	}

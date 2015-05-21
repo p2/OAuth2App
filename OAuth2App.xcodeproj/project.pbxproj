@@ -16,7 +16,6 @@
 		EEA355651A39ABF300606646 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA355641A39ABF300606646 /* Images.xcassets */; };
 		EEA355681A39ABF400606646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA355661A39ABF400606646 /* Main.storyboard */; };
 		EEA355741A39ABF400606646 /* OAuth2AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355731A39ABF400606646 /* OAuth2AppTests.swift */; };
-		EEA3558D1A39D84F00606646 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = EEA3558C1A39D84F00606646 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -315,7 +314,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE1391DD1AC5BDA8002C7B18 /* RedditLoader.swift in Sources */,
-				EEA3558D1A39D84F00606646 /* README.md in Sources */,
 				EEA355631A39ABF300606646 /* ViewController.swift in Sources */,
 				EEA355611A39ABF300606646 /* AppDelegate.swift in Sources */,
 				EE0EDD221A39F43F00CE60E7 /* GitHubLoader.swift in Sources */,
