@@ -73,6 +73,10 @@ class ViewController: NSViewController
 				if let username = dict?["name"] as? String {
 					self.label?.stringValue = "Hello there, \(username)!"
 				}
+				else {
+					self.label?.stringValue = "Failed to fetch your name"
+					NSLog("Fetched: \(dict)")
+				}
 			}
 		}
 	}

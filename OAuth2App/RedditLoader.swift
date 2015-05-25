@@ -26,7 +26,7 @@ class RedditLoader
 	
 	let baseURL = NSURL(string: "https://oauth.reddit.com")!
 	
-	lazy var oauth2 = OAuth2CodeGrantBasicAuth(settings: [
+	lazy var oauth2 = OAuth2CodeGrant(settings: [
 		"client_id": "IByhV1ZcpTI6zQ",                              // yes, this client-id will work!
 		"client_secret": "",
 		"authorize_uri": "https://www.reddit.com/api/v1/authorize",

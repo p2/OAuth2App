@@ -33,6 +33,7 @@ class GitHubLoader
 		"token_uri": "https://github.com/login/oauth/access_token",
 		"scope": "user repo:status",
 		"redirect_uris": ["ppoauthapp://oauth/callback"],            // app has registered this scheme
+		"secret_in_body": true,                                      // GitHub does not accept client secret in the Authorization header
 		"verbose": true,
 	])
 	
