@@ -11,6 +11,7 @@
 		EE1391D01AC5A862002C7B18 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA355841A39AC6500606646 /* OAuth2.framework */; };
 		EE1391D11AC5A862002C7B18 /* OAuth2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEA355841A39AC6500606646 /* OAuth2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EE1391DD1AC5BDA8002C7B18 /* RedditLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1391DC1AC5BDA8002C7B18 /* RedditLoader.swift */; };
+		EE319EF61B32DFDD0065F3C7 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE319EF51B32DFDD0065F3C7 /* Loader.swift */; };
 		EEA355611A39ABF300606646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355601A39ABF300606646 /* AppDelegate.swift */; };
 		EEA355631A39ABF300606646 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355621A39ABF300606646 /* ViewController.swift */; };
 		EEA355651A39ABF300606646 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA355641A39ABF300606646 /* Images.xcassets */; };
@@ -80,6 +81,7 @@
 /* Begin PBXFileReference section */
 		EE0EDD211A39F43F00CE60E7 /* GitHubLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubLoader.swift; sourceTree = "<group>"; };
 		EE1391DC1AC5BDA8002C7B18 /* RedditLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditLoader.swift; sourceTree = "<group>"; };
+		EE319EF51B32DFDD0065F3C7 /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		EEA3555B1A39ABF300606646 /* OAuth2App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuth2App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA3555F1A39ABF300606646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEA355601A39ABF300606646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,9 +138,10 @@
 			isa = PBXGroup;
 			children = (
 				EEA355601A39ABF300606646 /* AppDelegate.swift */,
+				EEA355621A39ABF300606646 /* ViewController.swift */,
+				EE319EF51B32DFDD0065F3C7 /* Loader.swift */,
 				EE0EDD211A39F43F00CE60E7 /* GitHubLoader.swift */,
 				EE1391DC1AC5BDA8002C7B18 /* RedditLoader.swift */,
-				EEA355621A39ABF300606646 /* ViewController.swift */,
 				EEA355641A39ABF300606646 /* Images.xcassets */,
 				EEA355661A39ABF400606646 /* Main.storyboard */,
 				EEA3555E1A39ABF300606646 /* Supporting Files */,
@@ -228,7 +231,8 @@
 		EEA355531A39ABF300606646 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Ossus;
 				TargetAttributes = {
 					EEA3555A1A39ABF300606646 = {
@@ -317,6 +321,7 @@
 				EEA355631A39ABF300606646 /* ViewController.swift in Sources */,
 				EEA355611A39ABF300606646 /* AppDelegate.swift in Sources */,
 				EE0EDD221A39F43F00CE60E7 /* GitHubLoader.swift in Sources */,
+				EE319EF61B32DFDD0065F3C7 /* Loader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +385,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -445,6 +451,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = OAuth2App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.osx.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -457,6 +464,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = OAuth2App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.osx.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -476,6 +484,7 @@
 				);
 				INFOPLIST_FILE = OAuth2AppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.osx.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OAuth2App.app/Contents/MacOS/OAuth2App";
 			};
@@ -492,6 +501,7 @@
 				);
 				INFOPLIST_FILE = OAuth2AppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.osx.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OAuth2App.app/Contents/MacOS/OAuth2App";
 			};

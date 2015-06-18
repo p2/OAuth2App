@@ -10,59 +10,35 @@ import Cocoa
 import OAuth2
 
 
+let RedditSettings = [
+	"client_id": "IByhV1ZcpTI6zQ",                              // yes, this client-id will work!
+	"client_secret": "",
+	"authorize_uri": "https://www.reddit.com/api/v1/authorize",
+	"token_uri": "https://www.reddit.com/api/v1/access_token",
+	"scope": "identity",                                        // note that reddit uses comma-separated, not space-separated scopes!
+	"redirect_uris": ["ppoauthapp://oauth/callback"],           // app has registered this scheme
+	"verbose": true,
+]
+
+
 /**
 	Simple class handling authorization and data requests with Reddit.
  */
-class RedditLoader
+class RedditLoader: Loader
 {
-	static var sharedInstance = RedditLoader()
-	
-	class func handleRedirectURL(url: NSURL) {
-		sharedInstance.oauth2.handleRedirectURL(url)
-	}
+	static let sharedInstance = RedditLoader()
 	
 	
 	// MARK: - Instance
 	
 	let baseURL = NSURL(string: "https://oauth.reddit.com")!
 	
-	lazy var oauth2 = OAuth2CodeGrant(settings: [
-		"client_id": "IByhV1ZcpTI6zQ",                              // yes, this client-id will work!
-		"client_secret": "",
-		"authorize_uri": "https://www.reddit.com/api/v1/authorize",
-		"token_uri": "https://www.reddit.com/api/v1/access_token",
-		"scope": "identity",                                        // note that reddit uses comma-separated, not space-separated scopes!
-		"redirect_uris": ["ppoauthapp://oauth/callback"],           // app has registered this scheme
-		"verbose": true,
-	])
+	lazy var oauth2 = OAuth2CodeGrant(settings: RedditSettings)
 	
 	/** Start the OAuth dance. */
 	func authorize(callback: (wasFailure: Bool, error: NSError?) -> Void) {
 		oauth2.afterAuthorizeOrFailure = callback
 		oauth2.authorize(params: ["duration": "permanent"])
-	}
-	
-	/** Perform a request against the API and return decoded JSON or an NSError. */
-	func request(path: String, callback: ((dict: NSDictionary?, error: NSError?) -> Void)) {
-		let url = baseURL.URLByAppendingPathComponent(path)
-		let req = oauth2.request(forURL: url)
-		
-		let session = NSURLSession.sharedSession()
-		let task = session.dataTaskWithRequest(req) { data, response, error in
-			if nil != error {
-				dispatch_async(dispatch_get_main_queue()) {
-					callback(dict: nil, error: error)
-				}
-			}
-			else {
-				var err: NSError?
-				let dict = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &err) as? NSDictionary
-				dispatch_async(dispatch_get_main_queue()) {
-					callback(dict: dict, error: err)
-				}
-			}
-		}
-		task.resume()
 	}
 	
 	
