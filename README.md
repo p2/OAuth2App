@@ -7,6 +7,8 @@ It lets you login to GitHub and then pulls your user information, displaying you
 
 Take a look at the [`GitHubLoader`][gh] class, which is intended to be used as a singleton and handles the OAuth flow as well as requests to the GitHub API.
 
+There also is an [iOS Sample App](https://github.com/p2/OAuth2PodApp) which uses Cocoapods to integrate the OAuth2 framework.
+
 
 Installation
 ------------
