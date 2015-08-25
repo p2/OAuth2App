@@ -66,7 +66,7 @@ extension Loader
 				}
 			}
 		}
-		task?.resume()
+		task.resume()
 	}
 }
 
