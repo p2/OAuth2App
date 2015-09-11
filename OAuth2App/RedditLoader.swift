@@ -26,7 +26,7 @@ class RedditLoader
 	
 	let baseURL = NSURL(string: "https://oauth.reddit.com")!
 	
-	lazy var oauth2 = OAuth2CodeGrant(settings: [
+	lazy var oauth2: OAuth2CodeGrant = OAuth2CodeGrant(settings: [
 		"client_id": "IByhV1ZcpTI6zQ",                              // yes, this client-id will work!
 		"client_secret": "",
 		"authorize_uri": "https://www.reddit.com/api/v1/authorize",
@@ -55,10 +55,16 @@ class RedditLoader
 				}
 			}
 			else {
-				var err: NSError?
-				let dict = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &err) as? NSDictionary
-				dispatch_async(dispatch_get_main_queue()) {
-					callback(dict: dict, error: err)
+				do {
+					let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary
+					dispatch_async(dispatch_get_main_queue()) {
+						callback(dict: dict, error: nil)
+					}
+				}
+				catch let error {
+					dispatch_async(dispatch_get_main_queue()) {
+						callback(dict: nil, error: error as NSError)
+					}
 				}
 			}
 		}

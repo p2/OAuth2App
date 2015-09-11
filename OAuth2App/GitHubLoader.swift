@@ -26,7 +26,7 @@ class GitHubLoader
 	
 	let baseURL = NSURL(string: "https://api.github.com")!
 	
-	lazy var oauth2 = OAuth2CodeGrant(settings: [
+	lazy var oauth2: OAuth2CodeGrant = OAuth2CodeGrant(settings: [
 		"client_id": "8ae913c685556e73a16f",                         // yes, this client-id and secret will work!
 		"client_secret": "60d81efcc5293fd1d096854f4eee0764edb2da5d",
 		"authorize_uri": "https://github.com/login/oauth/authorize",
@@ -57,10 +57,16 @@ class GitHubLoader
 				}
 			}
 			else {
-				var err: NSError?
-				let dict = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &err) as? NSDictionary
-				dispatch_async(dispatch_get_main_queue()) {
-					callback(dict: dict, error: err)
+				do {
+					let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary
+					dispatch_async(dispatch_get_main_queue()) {
+						callback(dict: dict, error: nil)
+					}
+				}
+				catch let error {
+					dispatch_async(dispatch_get_main_queue()) {
+						callback(dict: nil, error: error as NSError)
+					}
 				}
 			}
 		}
