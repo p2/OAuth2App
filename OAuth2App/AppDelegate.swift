@@ -26,8 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
 	func handleURLEvent(event: NSAppleEventDescriptor, withReply reply: NSAppleEventDescriptor) {
 		if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue {
 			if let url = NSURL(string: urlString) where "ppoauthapp" == url.scheme && "oauth" == url.host {
-				GitHubLoader.handleRedirectURL(url)
-				//RedditLoader.handleRedirectURL(url)
+				NSNotificationCenter.defaultCenter().postNotificationName(OAuth2AppDidReceiveCallbackNotification, object: url)
 			}
 		}
 		else {

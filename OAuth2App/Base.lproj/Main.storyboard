@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14C68k" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="NmW-Em-Ayd">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6221"/>
-        <plugIn identifier="com.apple.imagekit.ibplugin" version="6221"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="9059"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -615,6 +615,12 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
+                                        <menuItem title="Service Selector" keyEquivalent="0" id="68c-lS-AMu">
+                                            <connections>
+                                                <segue destination="NmW-Em-Ayd" kind="show" id="J1Y-rl-Jb4"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="nal-Ly-9YN"/>
                                         <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -645,16 +651,94 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="OAuth2App" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="-299" y="-54"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="k7m-Ci-01b">
+            <objects>
+                <windowController storyboardIdentifier="Services" showSeguePresentationStyle="single" id="NmW-Em-Ayd" sceneMemberID="viewController">
+                    <window key="window" title="Services" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="bhF-RO-Gh7">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
+                        <rect key="contentRect" x="200" y="461" width="300" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+                    </window>
+                    <connections>
+                        <segue destination="KsJ-NW-6rF" kind="relationship" relationship="window.shadowedContentViewController" id="69L-dQ-9vY"/>
+                    </connections>
+                </windowController>
+                <customObject id="y3h-eH-A0c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-299" y="284"/>
+        </scene>
+        <!--Services View Controller-->
+        <scene sceneID="Wfz-7u-YJz">
+            <objects>
+                <viewController id="KsJ-NW-6rF" customClass="ServicesViewController" customModule="OAuth2App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="oS8-Ym-lHS">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8S-G3-hAi">
+                                <rect key="frame" x="95" y="87" width="111" height="96"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4nT-c2-mcp">
+                                        <rect key="frame" x="15" y="13" width="80" height="32"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="push" title="Reddit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pRP-Tq-mC7">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openReddit:" target="KsJ-NW-6rF" id="V0u-Rh-aAm"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfD-43-nfR">
+                                        <rect key="frame" x="14" y="48" width="83" height="32"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="push" title="GitHub" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4ba-Iy-SOB">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openGitHub:" target="KsJ-NW-6rF" id="DA2-eY-pRc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="FfD-43-nfR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v8S-G3-hAi" secondAttribute="leading" constant="20" id="DE8-k4-mq6"/>
+                                    <constraint firstItem="4nT-c2-mcp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v8S-G3-hAi" secondAttribute="leading" constant="20" id="Ejg-sL-lXI"/>
+                                    <constraint firstItem="4nT-c2-mcp" firstAttribute="top" secondItem="FfD-43-nfR" secondAttribute="bottom" constant="14" id="Ghi-kL-Lpi"/>
+                                    <constraint firstItem="FfD-43-nfR" firstAttribute="top" secondItem="v8S-G3-hAi" secondAttribute="top" constant="20" id="K5S-fW-R98"/>
+                                    <constraint firstAttribute="bottom" secondItem="4nT-c2-mcp" secondAttribute="bottom" constant="20" id="WIX-ki-jJE"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FfD-43-nfR" secondAttribute="trailing" constant="20" id="rYG-zS-PTY"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4nT-c2-mcp" secondAttribute="trailing" constant="20" id="ub7-CN-PJN"/>
+                                </constraints>
+                                <animations/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="v8S-G3-hAi" secondAttribute="bottom" id="Hmi-ZL-wuu"/>
+                            <constraint firstItem="v8S-G3-hAi" firstAttribute="centerX" secondItem="oS8-Ym-lHS" secondAttribute="centerX" id="PSM-eC-FaV"/>
+                            <constraint firstItem="v8S-G3-hAi" firstAttribute="centerY" secondItem="oS8-Ym-lHS" secondAttribute="centerY" id="VQL-NF-X7a"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="v8S-G3-hAi" secondAttribute="trailing" id="bcj-wl-OMX"/>
+                            <constraint firstItem="v8S-G3-hAi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oS8-Ym-lHS" secondAttribute="top" id="dsH-zZ-FPn"/>
+                            <constraint firstItem="v8S-G3-hAi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oS8-Ym-lHS" secondAttribute="leading" id="sXg-Jh-xkK"/>
+                        </constraints>
+                        <animations/>
+                    </view>
+                </viewController>
+                <customObject id="5LF-Lf-95T" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-299" y="804"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                <windowController storyboardIdentifier="SingleService" showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="450" width="480" height="362"/>
+                        <windowPositionMask key="initialPositionMask" topStrut="YES"/>
+                        <rect key="contentRect" x="196" y="95" width="480" height="362"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="480" height="362"/>
                     </window>
@@ -664,7 +748,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="360" y="284"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -675,7 +759,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Mw-fd-vcp">
-                                <rect key="frame" x="191" y="314" width="99" height="32"/>
+                                <rect key="frame" x="191" y="314" width="98" height="32"/>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="Authorize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YFR-mv-ow0">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -684,16 +769,18 @@
                                     <action selector="requestToken:" target="XfG-lQ-9wD" id="vPq-vV-rlx"/>
                                 </connections>
                             </button>
-                            <ikImageView wantsLayer="YES" supportsDragAndDrop="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVN-zg-hSq">
+                            <ikImageView wantsLayer="YES" zoomFactor="0.0" supportsDragAndDrop="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVN-zg-hSq">
                                 <rect key="frame" x="112" y="45" width="256" height="256"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="256" id="0id-3T-2Le"/>
                                     <constraint firstAttribute="width" constant="256" id="1f7-EC-DjT"/>
                                 </constraints>
+                                <animations/>
                                 <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                             </ikImageView>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lM7-ru-U5N">
                                 <rect key="frame" x="110" y="20" width="260" height="17"/>
+                                <animations/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" placeholderString="Not yet authorized" id="E15-9J-8sk">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -711,6 +798,7 @@
                             <constraint firstItem="lM7-ru-U5N" firstAttribute="trailing" secondItem="eVN-zg-hSq" secondAttribute="trailing" id="kDs-je-9hQ"/>
                             <constraint firstItem="lM7-ru-U5N" firstAttribute="leading" secondItem="eVN-zg-hSq" secondAttribute="leading" id="wsH-lk-rSG"/>
                         </constraints>
+                        <animations/>
                     </view>
                     <connections>
                         <outlet property="button" destination="0Mw-fd-vcp" id="MKt-Su-GbC"/>
@@ -720,7 +808,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="753"/>
+            <point key="canvasLocation" x="360" y="804"/>
         </scene>
     </scenes>
 </document>

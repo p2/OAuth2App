@@ -13,16 +13,7 @@ import OAuth2
 /**
 	Simple class handling authorization and data requests with GitHub.
  */
-class GitHubLoader
-{
-	static var sharedInstance = GitHubLoader()
-	
-	class func handleRedirectURL(url: NSURL) {
-		sharedInstance.oauth2.handleRedirectURL(url)
-	}
-	
-	
-	// MARK: - Instance
+class GitHubLoader: DataLoader {
 	
 	let baseURL = NSURL(string: "https://api.github.com")!
 	
@@ -37,11 +28,6 @@ class GitHubLoader
 		"verbose": true,
 	])
 	
-	/** Start the OAuth dance. */
-	func authorize(callback: (wasFailure: Bool, error: NSError?) -> Void) {
-		oauth2.afterAuthorizeOrFailure = callback
-		oauth2.authorize()
-	}
 	
 	/** Perform a request against the GitHub API and return decoded JSON or an NSError. */
 	func request(path: String, callback: ((dict: NSDictionary?, error: NSError?) -> Void)) {
