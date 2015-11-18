@@ -30,7 +30,7 @@ class GitHubLoader: DataLoader {
 	
 	
 	/** Perform a request against the GitHub API and return decoded JSON or an NSError. */
-	func request(path: String, callback: ((dict: NSDictionary?, error: NSError?) -> Void)) {
+	func request(path: String, callback: ((dict: NSDictionary?, error: ErrorType?) -> Void)) {
 		let url = baseURL.URLByAppendingPathComponent(path)
 		let req = oauth2.request(forURL: url)
 		req.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
@@ -51,7 +51,7 @@ class GitHubLoader: DataLoader {
 				}
 				catch let error {
 					dispatch_async(dispatch_get_main_queue()) {
-						callback(dict: nil, error: error as NSError)
+						callback(dict: nil, error: error)
 					}
 				}
 			}
@@ -62,7 +62,7 @@ class GitHubLoader: DataLoader {
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(callback: ((dict: NSDictionary?, error: NSError?) -> Void)) {
+	func requestUserdata(callback: ((dict: NSDictionary?, error: ErrorType?) -> Void)) {
 		request("user", callback: callback)
 	}
 }

@@ -8,6 +8,7 @@
 
 import Cocoa
 import Quartz
+import OAuth2
 
 
 let OAuth2AppDidReceiveCallbackNotification = "OAuth2AppDidReceiveCallback"
@@ -25,13 +26,24 @@ class ViewController: NSViewController {
 	
 	var nextActionForgetsTokens = false
 	
-	/** Alert or log the given error message. */
-	func showError(error: NSError) {
+	/** Forwards to `displayError(NSError)`. */
+	func showError(error: ErrorType) {
+		if let error = error as? OAuth2Error {
+			let err = NSError(domain: "OAuth2ErrorDomain", code: 0, userInfo: [NSLocalizedDescriptionKey: error.description])
+			displayError(err)
+		}
+		else {
+			displayError(error as NSError)
+		}
+	}
+	
+	/** Alert or log the given NSError. */
+	func displayError(error: NSError) {
 		if let window = self.view.window {
 			NSAlert(error: error).beginSheetModalForWindow(window, completionHandler: nil)
 		}
 		else {
-			NSLog("Error authorizing: \(error.localizedDescription)")
+			NSLog("Error authorizing: \(error.description)")
 		}
 	}
 	
@@ -62,13 +74,13 @@ class ViewController: NSViewController {
 		}
 	}
 	
-	func didAuthorize(didFail: Bool, error: NSError?) {
+	func didAuthorize(didFail: Bool, error: ErrorType?) {
 		NSNotificationCenter.defaultCenter().removeObserver(self, name: OAuth2AppDidReceiveCallbackNotification, object: nil)
 		
 		if didFail {
 			button?.title = "Failed. Try Again."
-			if nil != error {
-				showError(error!)
+			if let error = error {
+				showError(error)
 			}
 		}
 		else {
@@ -91,8 +103,8 @@ class ViewController: NSViewController {
 	
 	func showUserData() {
 		loader.requestUserdata() { dict, error in
-			if nil != error {
-				self.showError(error!)
+			if let error = error {
+				self.showError(error)
 			}
 			else {
 				if let imgURL = dict?["avatar_url"] as? String {
