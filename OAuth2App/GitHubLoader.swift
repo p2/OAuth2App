@@ -6,7 +6,7 @@
 //  CC0, Public Domain
 //
 
-import Cocoa
+import Foundation
 import OAuth2
 
 

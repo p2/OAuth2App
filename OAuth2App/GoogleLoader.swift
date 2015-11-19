@@ -1,29 +1,26 @@
 //
-//  RedditLoader.swift
+//  LinkedInLoader.swift
 //  OAuth2App
 //
-//  Created by Pascal Pfiffner on 3/27/15.
-//  CC0, Public Domain
+//  Created by Pascal Pfiffner on 18/11/15.
+//  Copyright © 2015 Ossus. All rights reserved.
 //
 
 import Foundation
 import OAuth2
 
 
-/**
-	Simple class handling authorization and data requests with Reddit.
- */
-class RedditLoader: DataLoader {
+class GoogleLoader: DataLoader {
 	
-	let baseURL = NSURL(string: "https://oauth.reddit.com")!
-
+	let baseURL = NSURL(string: "https://www.googleapis.com")!
+	
 	lazy var oauth2: OAuth2CodeGrant = OAuth2CodeGrant(settings: [
-		"client_id": "IByhV1ZcpTI6zQ",                              // yes, this client-id will work!
-		"client_secret": "",
-		"authorize_uri": "https://www.reddit.com/api/v1/authorize",
-		"token_uri": "https://www.reddit.com/api/v1/access_token",
-		"scope": "identity",                                        // note that reddit uses comma-separated, not space-separated scopes!
-		"redirect_uris": ["ppoauthapp://oauth/callback"],           // app has registered this scheme
+		"client_id": "abc.apps.googleusercontent.com",
+		"client_secret": "def",
+		"authorize_uri": "https://accounts.google.com/o/oauth2/auth",
+		"token_uri": "https://www.googleapis.com/oauth2/v3/token",
+		"scope": "profile",
+		"redirect_uris": ["urn:ietf:wg:oauth:2.0:oob"],
 		"verbose": true,
 	])
 	
@@ -41,9 +38,16 @@ class RedditLoader: DataLoader {
 			}
 			else {
 				do {
-					let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary
+					let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! NSDictionary
+					var profile = [String: String]()
+					if let name = dict["displayName"] as? String {
+						profile["name"] = name
+					}
+					if let avatar = (dict["image"] as? NSDictionary)?["url"] as? String {
+						profile["avatar_url"] = avatar
+					}
 					dispatch_async(dispatch_get_main_queue()) {
-						callback(dict: dict, error: nil)
+						callback(dict: profile, error: nil)
 					}
 				}
 				catch let error {
@@ -60,7 +64,7 @@ class RedditLoader: DataLoader {
 	// MARK: - Convenience
 	
 	func requestUserdata(callback: ((dict: NSDictionary?, error: ErrorType?) -> Void)) {
-		request("api/v1/me", callback: callback)
+		request("plus/v1/people/me", callback: callback)
 	}
 }
 

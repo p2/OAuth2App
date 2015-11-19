@@ -679,10 +679,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8S-G3-hAi">
-                                <rect key="frame" x="95" y="87" width="111" height="96"/>
+                                <rect key="frame" x="94" y="70" width="112" height="131"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4nT-c2-mcp">
-                                        <rect key="frame" x="15" y="13" width="80" height="32"/>
+                                    <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4nT-c2-mcp">
+                                        <rect key="frame" x="16" y="48" width="80" height="32"/>
                                         <animations/>
                                         <buttonCell key="cell" type="push" title="Reddit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pRP-Tq-mC7">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -693,7 +693,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfD-43-nfR">
-                                        <rect key="frame" x="14" y="48" width="83" height="32"/>
+                                        <rect key="frame" x="15" y="83" width="83" height="32"/>
                                         <animations/>
                                         <buttonCell key="cell" type="push" title="GitHub" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4ba-Iy-SOB">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -703,15 +703,32 @@
                                             <action selector="openGitHub:" target="KsJ-NW-6rF" id="DA2-eY-pRc"/>
                                         </connections>
                                     </button>
+                                    <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X5x-6I-BVZ">
+                                        <rect key="frame" x="14" y="13" width="84" height="32"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="push" title="Google" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FsQ-at-A3R">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openGoogle:" target="KsJ-NW-6rF" id="lxn-tg-Sy1"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="FfD-43-nfR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v8S-G3-hAi" secondAttribute="leading" constant="20" id="DE8-k4-mq6"/>
                                     <constraint firstItem="4nT-c2-mcp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v8S-G3-hAi" secondAttribute="leading" constant="20" id="Ejg-sL-lXI"/>
                                     <constraint firstItem="4nT-c2-mcp" firstAttribute="top" secondItem="FfD-43-nfR" secondAttribute="bottom" constant="14" id="Ghi-kL-Lpi"/>
                                     <constraint firstItem="FfD-43-nfR" firstAttribute="top" secondItem="v8S-G3-hAi" secondAttribute="top" constant="20" id="K5S-fW-R98"/>
-                                    <constraint firstAttribute="bottom" secondItem="4nT-c2-mcp" secondAttribute="bottom" constant="20" id="WIX-ki-jJE"/>
+                                    <constraint firstItem="X5x-6I-BVZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v8S-G3-hAi" secondAttribute="leading" constant="20" id="LfB-Pt-db0"/>
+                                    <constraint firstItem="FfD-43-nfR" firstAttribute="centerX" secondItem="v8S-G3-hAi" secondAttribute="centerX" id="XZ1-wW-4wv"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="X5x-6I-BVZ" secondAttribute="trailing" constant="20" id="a1O-Sv-qq9"/>
+                                    <constraint firstItem="X5x-6I-BVZ" firstAttribute="top" secondItem="4nT-c2-mcp" secondAttribute="bottom" constant="14" id="bq4-bV-ud9"/>
+                                    <constraint firstItem="X5x-6I-BVZ" firstAttribute="centerX" secondItem="v8S-G3-hAi" secondAttribute="centerX" id="fR7-VL-6aT"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FfD-43-nfR" secondAttribute="trailing" constant="20" id="rYG-zS-PTY"/>
+                                    <constraint firstItem="4nT-c2-mcp" firstAttribute="centerX" secondItem="v8S-G3-hAi" secondAttribute="centerX" id="t14-qT-qpA"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4nT-c2-mcp" secondAttribute="trailing" constant="20" id="ub7-CN-PJN"/>
+                                    <constraint firstAttribute="bottom" secondItem="X5x-6I-BVZ" secondAttribute="bottom" constant="20" id="yKm-dE-6uY"/>
                                 </constraints>
                                 <animations/>
                             </customView>
@@ -786,8 +803,20 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="azM-sO-8rP">
+                                <rect key="frame" x="185" y="9" width="110" height="32"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="Paste Code" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7pK-rN-NAr">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="paste:" target="XfG-lQ-9wD" id="wGY-14-pux"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="azM-sO-8rP" firstAttribute="top" secondItem="eVN-zg-hSq" secondAttribute="bottom" constant="8" id="6uZ-Z0-c0D"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lM7-ru-U5N" secondAttribute="bottom" constant="20" symbolic="YES" id="83U-2q-VFG"/>
                             <constraint firstAttribute="centerX" secondItem="0Mw-fd-vcp" secondAttribute="centerX" id="Nej-nX-BTU"/>
                             <constraint firstAttribute="centerX" secondItem="eVN-zg-hSq" secondAttribute="centerX" id="ThD-1S-zEq"/>
@@ -795,6 +824,7 @@
                             <constraint firstItem="lM7-ru-U5N" firstAttribute="top" secondItem="eVN-zg-hSq" secondAttribute="bottom" constant="8" symbolic="YES" id="VTF-YE-vQ4"/>
                             <constraint firstItem="eVN-zg-hSq" firstAttribute="top" secondItem="0Mw-fd-vcp" secondAttribute="bottom" constant="20" symbolic="YES" id="cIa-QY-sYk"/>
                             <constraint firstItem="lM7-ru-U5N" firstAttribute="trailing" secondItem="eVN-zg-hSq" secondAttribute="trailing" id="kDs-je-9hQ"/>
+                            <constraint firstItem="azM-sO-8rP" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="n1s-5T-IkK"/>
                             <constraint firstItem="lM7-ru-U5N" firstAttribute="leading" secondItem="eVN-zg-hSq" secondAttribute="leading" id="wsH-lk-rSG"/>
                         </constraints>
                         <animations/>
@@ -803,6 +833,7 @@
                         <outlet property="button" destination="0Mw-fd-vcp" id="MKt-Su-GbC"/>
                         <outlet property="image" destination="eVN-zg-hSq" id="EPa-33-pGH"/>
                         <outlet property="label" destination="lM7-ru-U5N" id="d5G-Np-FDH"/>
+                        <outlet property="pasteButton" destination="azM-sO-8rP" id="3LO-hI-Eqk"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -12,6 +12,7 @@
 		EE1391D11AC5A862002C7B18 /* OAuth2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEA355841A39AC6500606646 /* OAuth2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EE28D05C1BED46F4001935BC /* RedditLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1391DC1AC5BDA8002C7B18 /* RedditLoader.swift */; };
 		EE28D05E1BED4D29001935BC /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28D05D1BED4D29001935BC /* ServicesViewController.swift */; };
+		EE79F6601BFD57ED00746243 /* GoogleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79F65F1BFD57ED00746243 /* GoogleLoader.swift */; };
 		EEA355611A39ABF300606646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355601A39ABF300606646 /* AppDelegate.swift */; };
 		EEA355631A39ABF300606646 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355621A39ABF300606646 /* ViewController.swift */; };
 		EEA355651A39ABF300606646 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA355641A39ABF300606646 /* Images.xcassets */; };
@@ -83,6 +84,7 @@
 		EE0EDD211A39F43F00CE60E7 /* GitHubLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubLoader.swift; sourceTree = "<group>"; };
 		EE1391DC1AC5BDA8002C7B18 /* RedditLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditLoader.swift; sourceTree = "<group>"; };
 		EE28D05D1BED4D29001935BC /* ServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		EE79F65F1BFD57ED00746243 /* GoogleLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLoader.swift; sourceTree = "<group>"; };
 		EEA3555B1A39ABF300606646 /* OAuth2App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuth2App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA3555F1A39ABF300606646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEA355601A39ABF300606646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				EEAC95DC1BEC1B5900670A70 /* DataLoader.swift */,
 				EE0EDD211A39F43F00CE60E7 /* GitHubLoader.swift */,
 				EE1391DC1AC5BDA8002C7B18 /* RedditLoader.swift */,
+				EE79F65F1BFD57ED00746243 /* GoogleLoader.swift */,
 				EEA355641A39ABF300606646 /* Images.xcassets */,
 				EEA355661A39ABF400606646 /* Main.storyboard */,
 				EEA3555E1A39ABF300606646 /* Supporting Files */,
@@ -320,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE79F6601BFD57ED00746243 /* GoogleLoader.swift in Sources */,
 				EE28D05C1BED46F4001935BC /* RedditLoader.swift in Sources */,
 				EEAC95DD1BEC1B5900670A70 /* DataLoader.swift in Sources */,
 				EE28D05E1BED4D29001935BC /* ServicesViewController.swift in Sources */,

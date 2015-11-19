@@ -20,11 +20,16 @@ class ViewController: NSViewController {
 	
 	@IBOutlet var button: NSButton?
 	
+	@IBOutlet var pasteButton: NSButton?
+	
 	@IBOutlet var image: IKImageView?
 	
 	@IBOutlet var label: NSTextField?
 	
 	var nextActionForgetsTokens = false
+	
+	
+	// MARK: - Error Handling
 	
 	/** Forwards to `displayError(NSError)`. */
 	func showError(error: ErrorType) {
@@ -41,6 +46,7 @@ class ViewController: NSViewController {
 	func displayError(error: NSError) {
 		if let window = self.view.window {
 			NSAlert(error: error).beginSheetModalForWindow(window, completionHandler: nil)
+			label?.stringValue = error.localizedDescription
 		}
 		else {
 			NSLog("Error authorizing: \(error.description)")
@@ -58,6 +64,8 @@ class ViewController: NSViewController {
 		}
 		button?.title = "Authorizing..."
 		button?.enabled = false
+		pasteButton?.hidden = false
+		label?.hidden = true
 		
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleRedirect:", name: OAuth2AppDidReceiveCallbackNotification, object: nil)
 		loader.authorize() { didFail, error in
@@ -66,6 +74,7 @@ class ViewController: NSViewController {
 	}
 	
 	func handleRedirect(notification: NSNotification) {
+		pasteButton?.hidden = true
 		if let url = notification.object as? NSURL {
 			loader.handleRedirectURL(url)
 		}
@@ -90,12 +99,16 @@ class ViewController: NSViewController {
 			showUserData()
 		}
 		button?.enabled = true
+		pasteButton?.hidden = true
+		label?.hidden = false
 	}
 	
 	@IBAction func forgetTokens(sender: NSButton?) {
 		button?.title = "Forgetting..."
 		loader.oauth2.forgetTokens()
 		button?.title = "Authorize"
+		pasteButton?.hidden = true
+		label?.hidden = false
 	}
 	
 	
@@ -118,6 +131,21 @@ class ViewController: NSViewController {
 					NSLog("Fetched: \(dict)")
 				}
 			}
+		}
+	}
+	
+	
+	// MARK: - Utilities
+	
+	@IBAction func paste(sender: AnyObject?) {
+		let pboard = NSPasteboard.generalPasteboard()
+		if let pasted = pboard.stringForType(NSPasteboardTypeString) {
+			pasteButton?.hidden = true
+			label?.hidden = false
+			loader.oauth2.exchangeCodeForToken(pasted)
+		}
+		else {
+			showError(OAuth2Error.Generic("Nothing in the clipboard that I can read"))
 		}
 	}
 }
