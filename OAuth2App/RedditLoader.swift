@@ -27,6 +27,11 @@ class RedditLoader: DataLoader {
 		"verbose": true,
 	])
 	
+	func authorize(callback: (wasFailure: Bool, error: ErrorType?) -> Void) {
+		oauth2.afterAuthorizeOrFailure = callback
+		oauth2.authorize(params: ["duration": "permanent"])
+	}
+	
 	/** Perform a request against the API and return decoded JSON or an NSError. */
 	func request(path: String, callback: ((dict: NSDictionary?, error: ErrorType?) -> Void)) {
 		let url = baseURL.URLByAppendingPathComponent(path)
