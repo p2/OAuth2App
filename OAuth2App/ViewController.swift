@@ -68,7 +68,7 @@ class ViewController: NSViewController {
 		label?.hidden = true
 		
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleRedirect:", name: OAuth2AppDidReceiveCallbackNotification, object: nil)
-		loader.authorize() { didFail, error in
+		loader.authorize(view.window) { didFail, error in
 			self.didAuthorize(didFail, error: error)
 		}
 	}
