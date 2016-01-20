@@ -28,6 +28,7 @@ class RedditLoader: DataLoader {
 	])
 	
 	func authorize(callback: (wasFailure: Bool, error: ErrorType?) -> Void) {
+		oauth2.authConfig.authorizeEmbedded = true
 		oauth2.afterAuthorizeOrFailure = callback
 		oauth2.authorize(params: ["duration": "permanent"])
 	}
