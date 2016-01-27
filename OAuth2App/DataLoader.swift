@@ -6,7 +6,7 @@
 //  Copyright © 2015 Ossus. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 import OAuth2
 
 
@@ -20,7 +20,7 @@ public protocol DataLoader {
 	func handleRedirectURL(url: NSURL)
 	
 	/** Start the OAuth dance. */
-	func authorize(callback: (wasFailure: Bool, error: ErrorType?) -> Void)
+	func authorize(window: NSWindow?, callback: (wasFailure: Bool, error: ErrorType?) -> Void)
 	
 	/** Perform a request against the GitHub API and return decoded JSON or an NSError. */
 	func request(path: String, callback: ((dict: NSDictionary?, error: ErrorType?) -> Void))
@@ -40,8 +40,9 @@ extension DataLoader {
 		return oauth2.hasUnexpiredAccessToken()
 	}
 	
-	func authorize(callback: (wasFailure: Bool, error: ErrorType?) -> Void) {
+	func authorize(window: NSWindow?, callback: (wasFailure: Bool, error: ErrorType?) -> Void) {
 		oauth2.authConfig.authorizeEmbedded = true
+		oauth2.authConfig.authorizeContext = window
 		oauth2.afterAuthorizeOrFailure = callback
 		oauth2.authorize()
 	}

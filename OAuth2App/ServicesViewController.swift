@@ -26,7 +26,6 @@ class ServicesViewController: NSViewController {
 				vc.loader = loader
 				
 				wc.showWindow(sender)
-				wc.window?.makeKeyAndOrderFront(sender)
 				openController = wc
 				return
 			}
