@@ -10,13 +10,13 @@ import Cocoa
 import OAuth2
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate
-{
+class AppDelegate: NSObject, NSApplicationDelegate {
+	
 	// register our app to get notified when launched via URL
 	func applicationWillFinishLaunching(notification: NSNotification) {
 		NSAppleEventManager.sharedAppleEventManager().setEventHandler(
 			self,
-			andSelector: "handleURLEvent:withReply:",
+			andSelector: #selector(AppDelegate.handleURLEvent(_:withReply:)),
 			forEventClass: AEEventClass(kInternetEventClass),
 			andEventID: AEEventID(kAEGetURL)
 		)

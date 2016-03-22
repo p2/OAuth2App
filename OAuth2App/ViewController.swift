@@ -67,7 +67,7 @@ class ViewController: NSViewController {
 		pasteButton?.hidden = false
 		label?.hidden = true
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleRedirect:", name: OAuth2AppDidReceiveCallbackNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.handleRedirect(_:)), name: OAuth2AppDidReceiveCallbackNotification, object: nil)
 		loader.authorize(view.window) { didFail, error in
 			self.didAuthorize(didFail, error: error)
 		}
