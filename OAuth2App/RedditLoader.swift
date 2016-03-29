@@ -34,7 +34,7 @@ class RedditLoader: DataLoader {
 	}
 	
 	/** Perform a request against the API and return decoded JSON or an NSError. */
-	func request(path: String, callback: ((dict: NSDictionary?, error: ErrorType?) -> Void)) {
+	func request(path: String, callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void)) {
 		let url = baseURL.URLByAppendingPathComponent(path)
 		let req = oauth2.request(forURL: url)
 		
@@ -47,7 +47,7 @@ class RedditLoader: DataLoader {
 			}
 			else {
 				do {
-					let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary
+					let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? OAuth2JSON
 					dispatch_async(dispatch_get_main_queue()) {
 						callback(dict: dict, error: nil)
 					}
@@ -65,7 +65,7 @@ class RedditLoader: DataLoader {
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(callback: ((dict: NSDictionary?, error: ErrorType?) -> Void)) {
+	func requestUserdata(callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void)) {
 		request("api/v1/me", callback: callback)
 	}
 }
