@@ -38,6 +38,10 @@ class ServicesViewController: NSViewController {
 		try! openViewControllerWithLoader(GitHubLoader(), sender: sender)
 	}
 	
+	@IBAction func openBitBucket(sender: NSButton?) {
+		try! openViewControllerWithLoader(BitBucketLoader(), sender: sender)
+	}
+	
 	@IBAction func openReddit(sender: NSButton?) {
 		try! openViewControllerWithLoader(RedditLoader(), sender: sender)
 	}

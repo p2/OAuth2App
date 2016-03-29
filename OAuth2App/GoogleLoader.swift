@@ -25,7 +25,7 @@ class GoogleLoader: DataLoader {
 	])
 	
 	/** Perform a request against the API and return decoded JSON or an NSError. */
-	func request(path: String, callback: ((dict: NSDictionary?, error: ErrorType?) -> Void)) {
+	func request(path: String, callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void)) {
 		let url = baseURL.URLByAppendingPathComponent(path)
 		let req = oauth2.request(forURL: url)
 		
@@ -38,12 +38,12 @@ class GoogleLoader: DataLoader {
 			}
 			else {
 				do {
-					let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! NSDictionary
+					let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! OAuth2JSON
 					var profile = [String: String]()
 					if let name = dict["displayName"] as? String {
 						profile["name"] = name
 					}
-					if let avatar = (dict["image"] as? NSDictionary)?["url"] as? String {
+					if let avatar = (dict["image"] as? OAuth2JSON)?["url"] as? String {
 						profile["avatar_url"] = avatar
 					}
 					dispatch_async(dispatch_get_main_queue()) {
@@ -63,7 +63,7 @@ class GoogleLoader: DataLoader {
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(callback: ((dict: NSDictionary?, error: ErrorType?) -> Void)) {
+	func requestUserdata(callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void)) {
 		request("plus/v1/people/me", callback: callback)
 	}
 }

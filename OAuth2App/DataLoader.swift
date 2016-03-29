@@ -23,12 +23,12 @@ public protocol DataLoader {
 	func authorize(window: NSWindow?, callback: (wasFailure: Bool, error: ErrorType?) -> Void)
 	
 	/** Perform a request against the GitHub API and return decoded JSON or an NSError. */
-	func request(path: String, callback: ((dict: NSDictionary?, error: ErrorType?) -> Void))
+	func request(path: String, callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void))
 	
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(callback: ((dict: NSDictionary?, error: ErrorType?) -> Void))
+	func requestUserdata(callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void))
 	
 	func isAuthorized() -> Bool
 }

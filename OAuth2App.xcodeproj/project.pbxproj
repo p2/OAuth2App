@@ -19,6 +19,7 @@
 		EEA355681A39ABF400606646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA355661A39ABF400606646 /* Main.storyboard */; };
 		EEA355741A39ABF400606646 /* OAuth2AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA355731A39ABF400606646 /* OAuth2AppTests.swift */; };
 		EEAC95DD1BEC1B5900670A70 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAC95DC1BEC1B5900670A70 /* DataLoader.swift */; };
+		EEC49F371C9C2BE100989A18 /* BitBucketLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC49F361C9C2BE100989A18 /* BitBucketLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,13 @@
 			remoteGlobalIDString = EEE209461942772800736F1A;
 			remoteInfo = OAuth2;
 		};
+		EEC49F3B1C9C2BE200989A18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 659854461C5B3BEA00237D39;
+			remoteInfo = OAuth2tvOS;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -97,6 +105,7 @@
 		EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuth2.xcodeproj; path = OAuth2/OAuth2.xcodeproj; sourceTree = "<group>"; };
 		EEA3558C1A39D84F00606646 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EEAC95DC1BEC1B5900670A70 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		EEC49F361C9C2BE100989A18 /* BitBucketLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitBucketLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +155,7 @@
 				EEA355621A39ABF300606646 /* ViewController.swift */,
 				EEAC95DC1BEC1B5900670A70 /* DataLoader.swift */,
 				EE0EDD211A39F43F00CE60E7 /* GitHubLoader.swift */,
+				EEC49F361C9C2BE100989A18 /* BitBucketLoader.swift */,
 				EE1391DC1AC5BDA8002C7B18 /* RedditLoader.swift */,
 				EE79F65F1BFD57ED00746243 /* GoogleLoader.swift */,
 				EEA355641A39ABF300606646 /* Images.xcassets */,
@@ -185,6 +195,7 @@
 			children = (
 				EEA355841A39AC6500606646 /* OAuth2.framework */,
 				EEA355861A39AC6500606646 /* OAuth2.framework */,
+				EEC49F3C1C9C2BE200989A18 /* OAuth2.framework */,
 				EEA355881A39AC6500606646 /* OAuth2Tests.xctest */,
 			);
 			name = Products;
@@ -297,6 +308,13 @@
 			remoteRef = EEA355871A39AC6500606646 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		EEC49F3C1C9C2BE200989A18 /* OAuth2.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OAuth2.framework;
+			remoteRef = EEC49F3B1C9C2BE200989A18 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -327,6 +345,7 @@
 				EE28D05C1BED46F4001935BC /* RedditLoader.swift in Sources */,
 				EEAC95DD1BEC1B5900670A70 /* DataLoader.swift in Sources */,
 				EE28D05E1BED4D29001935BC /* ServicesViewController.swift in Sources */,
+				EEC49F371C9C2BE100989A18 /* BitBucketLoader.swift in Sources */,
 				EEA355631A39ABF300606646 /* ViewController.swift in Sources */,
 				EEA355611A39ABF300606646 /* AppDelegate.swift in Sources */,
 				EE0EDD221A39F43F00CE60E7 /* GitHubLoader.swift in Sources */,
