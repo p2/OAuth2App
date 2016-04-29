@@ -724,8 +724,8 @@
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FfD-43-nfR" secondAttribute="trailing" constant="20" id="rYG-zS-PTY"/>
                                 </constraints>
                             </customView>
-                            <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="X5x-6I-BVZ">
-                                <rect key="frame" x="150" y="100" width="84" height="32"/>
+                            <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X5x-6I-BVZ">
+                                <rect key="frame" x="128" y="100" width="95" height="32"/>
                                 <buttonCell key="cell" type="push" title="Google" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FsQ-at-A3R">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -734,6 +734,29 @@
                                     <action selector="openGoogle:" target="KsJ-NW-6rF" id="lxn-tg-Sy1"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vLN-Dh-jdF">
+                                <rect key="frame" x="215" y="249" width="85" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Log Level" id="sk0-pv-TFs">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wMK-i8-7pm">
+                                <rect key="frame" x="215" y="217" width="85" height="24"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Default" id="lTN-ZM-CVj">
+                                    <font key="font" metaFont="system" size="14"/>
+                                    <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WjX-8p-be4">
+                                <rect key="frame" x="246" y="70" width="26" height="137"/>
+                                <sliderCell key="cell" alignment="left" maxValue="3" tickMarkPosition="left" numberOfTickMarks="4" allowsTickMarkValuesOnly="YES" sliderType="linear" id="mbm-l5-5kC"/>
+                                <connections>
+                                    <action selector="logLevelChange:" target="KsJ-NW-6rF" id="yxS-AP-HoV"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="v8S-G3-hAi" secondAttribute="bottom" id="Hmi-ZL-wuu"/>
@@ -746,6 +769,9 @@
                             <constraint firstItem="X5x-6I-BVZ" firstAttribute="centerX" secondItem="E4l-ET-96i" secondAttribute="centerX" id="xs0-gP-BKV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logLevelLabel" destination="wMK-i8-7pm" id="j8C-gu-3Na"/>
+                    </connections>
                 </viewController>
                 <customObject id="5LF-Lf-95T" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,7 +8,7 @@
 
 import Cocoa
 import Quartz
-
+import OAuth2
 
 enum ServiceError: ErrorType {
 	case NoViewController
@@ -49,5 +49,23 @@ class ServicesViewController: NSViewController {
 	@IBAction func openGoogle(sender: NSButton?) {
 		try! openViewControllerWithLoader(GoogleLoader(), sender: sender)
 	}
+  
+  // MARK: - Logging Level
+  @IBOutlet var logLevelLabel: NSTextField?
+  
+  @IBAction func logLevelChange( sender: NSSlider ) {
+    let newValue = Int( sender.doubleValue )
+    var newLabel = "Default"
+    if ( newValue == 0 ) {
+      OAuth2Base.logger = nil
+    } else {
+      let newLevel = newValue == 3 ? e2LoggerLevel.trace :
+                     newValue == 1 ? e2LoggerLevel.info  : e2LoggerLevel.debug
+      newLabel = newLevel.stringValue()
+      OAuth2Base.logger = e2LoggerPrint(name: "App Defined", level: newLevel )
+    }
+    self.logLevelLabel?.stringValue = newLabel
+  }
+  
 }
 
