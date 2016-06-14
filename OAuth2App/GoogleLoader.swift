@@ -12,11 +12,11 @@ import OAuth2
 
 class GoogleLoader: DataLoader {
 	
-	let baseURL = NSURL(string: "https://www.googleapis.com")!
+	let baseURL = URL(string: "https://www.googleapis.com")!
 	
 	lazy var oauth2: OAuth2CodeGrant = OAuth2CodeGrant(settings: [
-		"client_id": "abc.apps.googleusercontent.com",
-		"client_secret": "def",
+		"client_id": "264768155148-edjhk5aclg20o4fgisblc53ne4991oc3.apps.googleusercontent.com",
+		"client_secret": "LR2fYPFz0IrytZgkuXDEVTVp",
 		"authorize_uri": "https://accounts.google.com/o/oauth2/auth",
 		"token_uri": "https://www.googleapis.com/oauth2/v3/token",
 		"scope": "profile",
@@ -25,20 +25,23 @@ class GoogleLoader: DataLoader {
 	])
 	
 	/** Perform a request against the API and return decoded JSON or an NSError. */
-	func request(path: String, callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void)) {
-		let url = baseURL.URLByAppendingPathComponent(path)
+	func request(_ path: String, callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void)) {
+		guard let url = try? baseURL.appendingPathComponent(path) else {
+			callback(dict: nil, error: OAuth2Error.generic("Cannot append path «\(path)» to base URL"))
+			return
+		}
 		let req = oauth2.request(forURL: url)
 		
-		let session = NSURLSession.sharedSession()
-		let task = session.dataTaskWithRequest(req) { data, response, error in
+		let session = URLSession.shared()
+		let task = session.dataTask(with: req) { data, response, error in
 			if nil != error {
-				dispatch_async(dispatch_get_main_queue()) {
+				DispatchQueue.main.async() {
 					callback(dict: nil, error: error)
 				}
 			}
 			else {
 				do {
-					let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! OAuth2JSON
+					let dict = try JSONSerialization.jsonObject(with: data!, options: []) as! OAuth2JSON
 					var profile = [String: String]()
 					if let name = dict["displayName"] as? String {
 						profile["name"] = name
@@ -46,12 +49,12 @@ class GoogleLoader: DataLoader {
 					if let avatar = (dict["image"] as? OAuth2JSON)?["url"] as? String {
 						profile["avatar_url"] = avatar
 					}
-					dispatch_async(dispatch_get_main_queue()) {
+					DispatchQueue.main.async() {
 						callback(dict: profile, error: nil)
 					}
 				}
 				catch let error {
-					dispatch_async(dispatch_get_main_queue()) {
+					DispatchQueue.main.async() {
 						callback(dict: nil, error: error)
 					}
 				}
@@ -63,7 +66,7 @@ class GoogleLoader: DataLoader {
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void)) {
+	func requestUserdata(_ callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void)) {
 		request("plus/v1/people/me", callback: callback)
 	}
 }

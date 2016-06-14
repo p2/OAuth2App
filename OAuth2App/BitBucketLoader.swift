@@ -15,7 +15,7 @@ Simple class handling authorization and data requests with BitBucket.
 */
 class BitBucketLoader: DataLoader {
 	
-	let baseURL = NSURL(string: "https://api.bitbucket.org/2.0/")!
+	let baseURL = URL(string: "https://api.bitbucket.org/2.0/")!
 	
 	lazy var oauth2: OAuth2CodeGrant = OAuth2CodeGrant(settings: [
 		"client_id": "DPv2YpXLJnNcFxX3uA",                         // yes, this client-id and secret will work!
@@ -29,28 +29,31 @@ class BitBucketLoader: DataLoader {
 	
 	
 	/** Perform a request against the BitBucket API and return decoded JSON or an NSError. */
-	func request(path: String, callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void)) {
-		let url = baseURL.URLByAppendingPathComponent(path)
-		let req = oauth2.request(forURL: url)
+	func request(_ path: String, callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void)) {
+		guard let url = try? baseURL.appendingPathComponent(path) else {
+			callback(dict: nil, error: OAuth2Error.generic("Cannot append path «\(path)» to base URL"))
+			return
+		}
+		var req = oauth2.request(forURL: url)
 		req.setValue("application/json", forHTTPHeaderField: "Accept")
 		
-		let task = oauth2.session.dataTaskWithRequest(req) { data, response, error in
+		let task = oauth2.session.dataTask(with: req) { data, response, error in
 			if nil != error {
-				dispatch_async(dispatch_get_main_queue()) {
+				DispatchQueue.main.asynchronously() {
 					callback(dict: nil, error: error)
 				}
 			}
 			else {
 				do {
-					var dict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? OAuth2JSON
+					var dict = try JSONSerialization.jsonObject(with: data!, options: []) as? OAuth2JSON
 					dict!["name"] = dict?["display_name"] ?? "unknown"
 					dict!["avatar_url"] = ((dict?["links"] as? [String: OAuth2JSON])?["avatar"] as? [String: String])?["href"]
-					dispatch_async(dispatch_get_main_queue()) {
+					DispatchQueue.main.asynchronously() {
 						callback(dict: dict, error: nil)
 					}
 				}
 				catch let error {
-					dispatch_async(dispatch_get_main_queue()) {
+					DispatchQueue.main.asynchronously() {
 						callback(dict: nil, error: error)
 					}
 				}
@@ -62,7 +65,7 @@ class BitBucketLoader: DataLoader {
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void)) {
+	func requestUserdata(_ callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void)) {
 		request("user", callback: callback)
 	}
 }

@@ -17,18 +17,18 @@ public protocol DataLoader {
 	
 	var oauth2: OAuth2CodeGrant { get }
 	
-	func handleRedirectURL(url: NSURL)
+	func handleRedirectURL(_ url: URL)
 	
 	/** Start the OAuth dance. */
-	func authorize(window: NSWindow?, callback: (wasFailure: Bool, error: ErrorType?) -> Void)
+	func authorize(_ window: NSWindow?, callback: (wasFailure: Bool, error: ErrorProtocol?) -> Void)
 	
 	/** Perform a request against the GitHub API and return decoded JSON or an NSError. */
-	func request(path: String, callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void))
+	func request(_ path: String, callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void))
 	
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void))
+	func requestUserdata(_ callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void))
 	
 	func isAuthorized() -> Bool
 }
@@ -40,14 +40,14 @@ extension DataLoader {
 		return oauth2.hasUnexpiredAccessToken()
 	}
 	
-	func authorize(window: NSWindow?, callback: (wasFailure: Bool, error: ErrorType?) -> Void) {
+	func authorize(_ window: NSWindow?, callback: (wasFailure: Bool, error: ErrorProtocol?) -> Void) {
 		oauth2.authConfig.authorizeEmbedded = true
 		oauth2.authConfig.authorizeContext = window
 		oauth2.afterAuthorizeOrFailure = callback
 		oauth2.authorize()
 	}
 	
-	func handleRedirectURL(url: NSURL) {
+	func handleRedirectURL(_ url: URL) {
 		oauth2.handleRedirectURL(url)
 	}
 }

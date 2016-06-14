@@ -32,7 +32,7 @@ class ViewController: NSViewController {
 	// MARK: - Error Handling
 	
 	/** Forwards to `displayError(NSError)`. */
-	func showError(error: ErrorType) {
+	func showError(_ error: ErrorProtocol) {
 		if let error = error as? OAuth2Error {
 			let err = NSError(domain: "OAuth2ErrorDomain", code: 0, userInfo: [NSLocalizedDescriptionKey: error.description])
 			displayError(err)
@@ -43,9 +43,9 @@ class ViewController: NSViewController {
 	}
 	
 	/** Alert or log the given NSError. */
-	func displayError(error: NSError) {
+	func displayError(_ error: NSError) {
 		if let window = self.view.window {
-			NSAlert(error: error).beginSheetModalForWindow(window, completionHandler: nil)
+			NSAlert(error: error).beginSheetModal(for: window, completionHandler: nil)
 			label?.stringValue = error.localizedDescription
 		}
 		else {
@@ -56,26 +56,26 @@ class ViewController: NSViewController {
 	
 	// MARK: - Authorization
 	
-	@IBAction func requestToken(sender: NSButton?) {
+	@IBAction func requestToken(_ sender: NSButton?) {
 		if nextActionForgetsTokens {
 			nextActionForgetsTokens = false
 			forgetTokens(sender)
 			return
 		}
 		button?.title = "Authorizing..."
-		button?.enabled = false
-		pasteButton?.hidden = false
-		label?.hidden = true
+		button?.isEnabled = false
+		pasteButton?.isHidden = false
+		label?.isHidden = true
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.handleRedirect(_:)), name: OAuth2AppDidReceiveCallbackNotification, object: nil)
+		NotificationCenter.default().addObserver(self, selector: #selector(ViewController.handleRedirect(_:)), name: OAuth2AppDidReceiveCallbackNotification, object: nil)
 		loader.authorize(view.window) { didFail, error in
 			self.didAuthorize(didFail, error: error)
 		}
 	}
 	
-	func handleRedirect(notification: NSNotification) {
-		pasteButton?.hidden = true
-		if let url = notification.object as? NSURL {
+	func handleRedirect(_ notification: Notification) {
+		pasteButton?.isHidden = true
+		if let url = notification.object as? URL {
 			loader.handleRedirectURL(url)
 		}
 		else {
@@ -83,8 +83,8 @@ class ViewController: NSViewController {
 		}
 	}
 	
-	func didAuthorize(didFail: Bool, error: ErrorType?) {
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: OAuth2AppDidReceiveCallbackNotification, object: nil)
+	func didAuthorize(_ didFail: Bool, error: ErrorProtocol?) {
+		NotificationCenter.default().removeObserver(self, name: NSNotification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: nil)
 		
 		if didFail {
 			button?.title = "Failed. Try Again."
@@ -98,17 +98,17 @@ class ViewController: NSViewController {
 			label?.stringValue = "Fetching user data..."
 			showUserData()
 		}
-		button?.enabled = true
-		pasteButton?.hidden = true
-		label?.hidden = false
+		button?.isEnabled = true
+		pasteButton?.isHidden = true
+		label?.isHidden = false
 	}
 	
-	@IBAction func forgetTokens(sender: NSButton?) {
+	@IBAction func forgetTokens(_ sender: NSButton?) {
 		button?.title = "Forgetting..."
 		loader.oauth2.forgetTokens()
 		button?.title = "Authorize"
-		pasteButton?.hidden = true
-		label?.hidden = false
+		pasteButton?.isHidden = true
+		label?.isHidden = false
 	}
 	
 	
@@ -121,7 +121,7 @@ class ViewController: NSViewController {
 			}
 			else {
 				if let imgURL = dict?["avatar_url"] as? String {
-					self.image?.setImageWithURL(NSURL(string: imgURL)!)
+					self.image?.setImageWith(URL(string: imgURL)!)
 				}
 				if let username = dict?["name"] as? String {
 					self.label?.stringValue = "Hello there, \(username)!"
@@ -137,15 +137,15 @@ class ViewController: NSViewController {
 	
 	// MARK: - Utilities
 	
-	@IBAction func paste(sender: AnyObject?) {
-		let pboard = NSPasteboard.generalPasteboard()
-		if let pasted = pboard.stringForType(NSPasteboardTypeString) {
-			pasteButton?.hidden = true
-			label?.hidden = false
+	@IBAction func paste(_ sender: AnyObject?) {
+		let pboard = NSPasteboard.general()
+		if let pasted = pboard.string(forType: NSPasteboardTypeString) {
+			pasteButton?.isHidden = true
+			label?.isHidden = false
 			loader.oauth2.exchangeCodeForToken(pasted)
 		}
 		else {
-			showError(OAuth2Error.Generic("Nothing in the clipboard that I can read"))
+			showError(OAuth2Error.generic("Nothing in the clipboard that I can read"))
 		}
 	}
 }

@@ -15,7 +15,7 @@ import OAuth2
  */
 class GitHubLoader: DataLoader {
 	
-	let baseURL = NSURL(string: "https://api.github.com")!
+	let baseURL = URL(string: "https://api.github.com")!
 	
 	lazy var oauth2: OAuth2CodeGrant = OAuth2CodeGrant(settings: [
 		"client_id": "8ae913c685556e73a16f",                         // yes, this client-id and secret will work!
@@ -30,26 +30,30 @@ class GitHubLoader: DataLoader {
 	
 	
 	/** Perform a request against the GitHub API and return decoded JSON or an NSError. */
-	func request(path: String, callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void)) {
-		let url = baseURL.URLByAppendingPathComponent(path)
-		let req = oauth2.request(forURL: url)
+	func request(_ path: String, callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void)) {
+		oauth2.logger = OAuth2DebugLogger(.trace)
+		guard let url = try? baseURL.appendingPathComponent(path) else {
+			callback(dict: nil, error: OAuth2Error.generic("Cannot append path «\(path)» to base URL"))
+			return
+		}
+		var req = oauth2.request(forURL: url)
 		req.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
 		
-		let task = oauth2.session.dataTaskWithRequest(req) { data, response, error in
+		let task = oauth2.session.dataTask(with: req) { data, response, error in
 			if nil != error {
-				dispatch_async(dispatch_get_main_queue()) {
+				DispatchQueue.main.async() {
 					callback(dict: nil, error: error)
 				}
 			}
 			else {
 				do {
-					let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? OAuth2JSON
-					dispatch_async(dispatch_get_main_queue()) {
+					let dict = try JSONSerialization.jsonObject(with: data!, options: []) as? OAuth2JSON
+					DispatchQueue.main.async() {
 						callback(dict: dict, error: nil)
 					}
 				}
 				catch let error {
-					dispatch_async(dispatch_get_main_queue()) {
+					DispatchQueue.main.async() {
 						callback(dict: nil, error: error)
 					}
 				}
@@ -61,7 +65,7 @@ class GitHubLoader: DataLoader {
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void)) {
+	func requestUserdata(_ callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void)) {
 		request("user", callback: callback)
 	}
 }

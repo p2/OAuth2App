@@ -13,8 +13,8 @@ import OAuth2
 class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	// register our app to get notified when launched via URL
-	func applicationWillFinishLaunching(notification: NSNotification) {
-		NSAppleEventManager.sharedAppleEventManager().setEventHandler(
+	func applicationWillFinishLaunching(_ notification: Notification) {
+		NSAppleEventManager.shared().setEventHandler(
 			self,
 			andSelector: #selector(AppDelegate.handleURLEvent(_:withReply:)),
 			forEventClass: AEEventClass(kInternetEventClass),
@@ -23,10 +23,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
 	/** Gets called when the App launches/opens via URL. */
-	func handleURLEvent(event: NSAppleEventDescriptor, withReply reply: NSAppleEventDescriptor) {
-		if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue {
-			if let url = NSURL(string: urlString) where "ppoauthapp" == url.scheme && "oauth" == url.host {
-				NSNotificationCenter.defaultCenter().postNotificationName(OAuth2AppDidReceiveCallbackNotification, object: url)
+	func handleURLEvent(_ event: NSAppleEventDescriptor, withReply reply: NSAppleEventDescriptor) {
+		if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue {
+			if let url = URL(string: urlString) where "ppoauthapp" == url.scheme && "oauth" == url.host {
+				NotificationCenter.default().post(name: Notification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: url)
 			}
 		}
 		else {

@@ -15,7 +15,7 @@ import OAuth2
  */
 class RedditLoader: DataLoader {
 	
-	let baseURL = NSURL(string: "https://oauth.reddit.com")!
+	let baseURL = URL(string: "https://oauth.reddit.com")!
 
 	lazy var oauth2: OAuth2CodeGrant = OAuth2CodeGrant(settings: [
 		"client_id": "IByhV1ZcpTI6zQ",                              // yes, this client-id will work!
@@ -27,33 +27,36 @@ class RedditLoader: DataLoader {
 		"verbose": true,
 	])
 	
-	func authorize(callback: (wasFailure: Bool, error: ErrorType?) -> Void) {
+	func authorize(_ callback: (wasFailure: Bool, error: ErrorProtocol?) -> Void) {
 		oauth2.authConfig.authorizeEmbedded = true
 		oauth2.afterAuthorizeOrFailure = callback
 		oauth2.authorize(params: ["duration": "permanent"])
 	}
 	
 	/** Perform a request against the API and return decoded JSON or an NSError. */
-	func request(path: String, callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void)) {
-		let url = baseURL.URLByAppendingPathComponent(path)
+	func request(_ path: String, callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void)) {
+		guard let url = try? baseURL.appendingPathComponent(path) else {
+			callback(dict: nil, error: OAuth2Error.generic("Cannot append path «\(path)» to base URL"))
+			return
+		}
 		let req = oauth2.request(forURL: url)
 		
-		let session = NSURLSession.sharedSession()
-		let task = session.dataTaskWithRequest(req) { data, response, error in
+		let session = URLSession.shared()
+		let task = session.dataTask(with: req) { data, response, error in
 			if nil != error {
-				dispatch_async(dispatch_get_main_queue()) {
+				DispatchQueue.main.async() {
 					callback(dict: nil, error: error)
 				}
 			}
 			else {
 				do {
-					let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? OAuth2JSON
-					dispatch_async(dispatch_get_main_queue()) {
+					let dict = try JSONSerialization.jsonObject(with: data!, options: []) as? OAuth2JSON
+					DispatchQueue.main.async() {
 						callback(dict: dict, error: nil)
 					}
 				}
 				catch let error {
-					dispatch_async(dispatch_get_main_queue()) {
+					DispatchQueue.main.async() {
 						callback(dict: nil, error: error)
 					}
 				}
@@ -65,7 +68,7 @@ class RedditLoader: DataLoader {
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(callback: ((dict: OAuth2JSON?, error: ErrorType?) -> Void)) {
+	func requestUserdata(_ callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void)) {
 		request("api/v1/me", callback: callback)
 	}
 }
