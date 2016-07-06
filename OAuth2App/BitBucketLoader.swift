@@ -39,7 +39,7 @@ class BitBucketLoader: DataLoader {
 		
 		let task = oauth2.session.dataTask(with: req) { data, response, error in
 			if nil != error {
-				DispatchQueue.main.asynchronously() {
+				DispatchQueue.main.async() {
 					callback(dict: nil, error: error)
 				}
 			}
@@ -48,12 +48,12 @@ class BitBucketLoader: DataLoader {
 					var dict = try JSONSerialization.jsonObject(with: data!, options: []) as? OAuth2JSON
 					dict!["name"] = dict?["display_name"] ?? "unknown"
 					dict!["avatar_url"] = ((dict?["links"] as? [String: OAuth2JSON])?["avatar"] as? [String: String])?["href"]
-					DispatchQueue.main.asynchronously() {
+					DispatchQueue.main.async() {
 						callback(dict: dict, error: nil)
 					}
 				}
 				catch let error {
-					DispatchQueue.main.asynchronously() {
+					DispatchQueue.main.async() {
 						callback(dict: nil, error: error)
 					}
 				}

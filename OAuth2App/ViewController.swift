@@ -67,7 +67,7 @@ class ViewController: NSViewController {
 		pasteButton?.isHidden = false
 		label?.isHidden = true
 		
-		NotificationCenter.default().addObserver(self, selector: #selector(ViewController.handleRedirect(_:)), name: OAuth2AppDidReceiveCallbackNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handleRedirect(_:)), name: NSNotification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: nil)
 		loader.authorize(view.window) { didFail, error in
 			self.didAuthorize(didFail, error: error)
 		}
@@ -84,7 +84,7 @@ class ViewController: NSViewController {
 	}
 	
 	func didAuthorize(_ didFail: Bool, error: ErrorProtocol?) {
-		NotificationCenter.default().removeObserver(self, name: NSNotification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: nil)
+		NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: nil)
 		
 		if didFail {
 			button?.title = "Failed. Try Again."

@@ -32,7 +32,7 @@ class GoogleLoader: DataLoader {
 		}
 		let req = oauth2.request(forURL: url)
 		
-		let session = URLSession.shared()
+		let session = URLSession.shared
 		let task = session.dataTask(with: req) { data, response, error in
 			if nil != error {
 				DispatchQueue.main.async() {

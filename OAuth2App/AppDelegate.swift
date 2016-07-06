@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func handleURLEvent(_ event: NSAppleEventDescriptor, withReply reply: NSAppleEventDescriptor) {
 		if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue {
 			if let url = URL(string: urlString) where "ppoauthapp" == url.scheme && "oauth" == url.host {
-				NotificationCenter.default().post(name: Notification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: url)
+				NotificationCenter.default.post(name: Notification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: url)
 			}
 		}
 		else {
