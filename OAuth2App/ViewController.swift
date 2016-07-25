@@ -68,8 +68,8 @@ class ViewController: NSViewController {
 		label?.isHidden = true
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handleRedirect(_:)), name: NSNotification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: nil)
-		loader.authorize(view.window) { didFail, error in
-			self.didAuthorize(didFail, error: error)
+		loader.authorize(view.window) { authParams, error in
+			self.didAuthorize(with: authParams, or: error)
 		}
 	}
 	
@@ -83,20 +83,21 @@ class ViewController: NSViewController {
 		}
 	}
 	
-	func didAuthorize(_ didFail: Bool, error: ErrorProtocol?) {
+	func didAuthorize(with params: OAuth2JSON?, or error: ErrorProtocol?) {
 		NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: nil)
 		
-		if didFail {
+		if let error = error {
 			button?.title = "Failed. Try Again."
-			if let error = error {
-				showError(error)
-			}
+			showError(error)
 		}
-		else {
+		else if let _ = params {
 			nextActionForgetsTokens = true
 			button?.title = "Forget Tokens"
 			label?.stringValue = "Fetching user data..."
 			showUserData()
+		}
+		else {
+			button?.title = "Cancelled. Try Again."
 		}
 		button?.isEnabled = true
 		pasteButton?.isHidden = true
