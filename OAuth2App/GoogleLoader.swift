@@ -25,18 +25,15 @@ class GoogleLoader: DataLoader {
 	])
 	
 	/** Perform a request against the API and return decoded JSON or an NSError. */
-	func request(_ path: String, callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void)) {
-		guard let url = try? baseURL.appendingPathComponent(path) else {
-			callback(dict: nil, error: OAuth2Error.generic("Cannot append path «\(path)» to base URL"))
-			return
-		}
+	func request(path: String, callback: ((OAuth2JSON?, Error?) -> Void)) {
+		let url = baseURL.appendingPathComponent(path)
 		let req = oauth2.request(forURL: url)
 		
 		let session = URLSession.shared
 		let task = session.dataTask(with: req) { data, response, error in
 			if nil != error {
 				DispatchQueue.main.async() {
-					callback(dict: nil, error: error)
+					callback(nil, error)
 				}
 			}
 			else {
@@ -50,12 +47,12 @@ class GoogleLoader: DataLoader {
 						profile["avatar_url"] = avatar
 					}
 					DispatchQueue.main.async() {
-						callback(dict: profile, error: nil)
+						callback(profile, nil)
 					}
 				}
 				catch let error {
 					DispatchQueue.main.async() {
-						callback(dict: nil, error: error)
+						callback(nil, error)
 					}
 				}
 			}
@@ -66,8 +63,8 @@ class GoogleLoader: DataLoader {
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(_ callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void)) {
-		request("plus/v1/people/me", callback: callback)
+	func requestUserdata(callback: ((_ dict: OAuth2JSON?, _ error: Error?) -> Void)) {
+		request(path: "plus/v1/people/me", callback: callback)
 	}
 }
 

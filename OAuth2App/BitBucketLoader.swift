@@ -29,18 +29,15 @@ class BitBucketLoader: DataLoader {
 	
 	
 	/** Perform a request against the BitBucket API and return decoded JSON or an NSError. */
-	func request(_ path: String, callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void)) {
-		guard let url = try? baseURL.appendingPathComponent(path) else {
-			callback(dict: nil, error: OAuth2Error.generic("Cannot append path «\(path)» to base URL"))
-			return
-		}
+	func request(path: String, callback: ((OAuth2JSON?, Error?) -> Void)) {
+		let url = baseURL.appendingPathComponent(path)
 		var req = oauth2.request(forURL: url)
 		req.setValue("application/json", forHTTPHeaderField: "Accept")
 		
 		let task = oauth2.session.dataTask(with: req) { data, response, error in
 			if nil != error {
 				DispatchQueue.main.async() {
-					callback(dict: nil, error: error)
+					callback(nil, error)
 				}
 			}
 			else {
@@ -49,12 +46,12 @@ class BitBucketLoader: DataLoader {
 					dict!["name"] = dict?["display_name"] ?? "unknown"
 					dict!["avatar_url"] = ((dict?["links"] as? [String: OAuth2JSON])?["avatar"] as? [String: String])?["href"]
 					DispatchQueue.main.async() {
-						callback(dict: dict, error: nil)
+						callback(dict, nil)
 					}
 				}
 				catch let error {
 					DispatchQueue.main.async() {
-						callback(dict: nil, error: error)
+						callback(nil, error)
 					}
 				}
 			}
@@ -65,8 +62,8 @@ class BitBucketLoader: DataLoader {
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(_ callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void)) {
-		request("user", callback: callback)
+	func requestUserdata(callback: ((_ dict: OAuth2JSON?, _ error: Error?) -> Void)) {
+		request(path: "user", callback: callback)
 	}
 }
 

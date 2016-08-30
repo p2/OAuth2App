@@ -10,7 +10,7 @@ import Cocoa
 import Quartz
 
 
-enum ServiceError: ErrorProtocol {
+enum ServiceError: Error {
 	case noViewController
 	case incorrectViewControllerClass
 }

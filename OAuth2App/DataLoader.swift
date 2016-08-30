@@ -20,15 +20,15 @@ public protocol DataLoader {
 	func handleRedirectURL(_ url: URL)
 	
 	/** Start the OAuth dance. */
-	func authorize(_ window: NSWindow?, callback: (authParams: OAuth2JSON?, error: ErrorProtocol?) -> Void)
+	func authorize(from window: NSWindow?, callback: @escaping (_ authParams: OAuth2JSON?, _ error: Error?) -> Void)
 	
 	/** Perform a request against the GitHub API and return decoded JSON or an NSError. */
-	func request(_ path: String, callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void))
+	func request(path: String, callback: ((_ dict: OAuth2JSON?, _ error: Error?) -> Void))
 	
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(_ callback: ((dict: OAuth2JSON?, error: ErrorProtocol?) -> Void))
+	func requestUserdata(callback: ((_ dict: OAuth2JSON?, _ error: Error?) -> Void))
 	
 	func isAuthorized() -> Bool
 }
@@ -40,7 +40,7 @@ extension DataLoader {
 		return oauth2.hasUnexpiredAccessToken()
 	}
 	
-	func authorize(_ window: NSWindow?, callback: (authParams: OAuth2JSON?, error: ErrorProtocol?) -> Void) {
+	func authorize(from window: NSWindow?, callback: @escaping (_ authParams: OAuth2JSON?, _ error: Error?) -> Void) {
 		oauth2.authConfig.authorizeEmbedded = true
 		oauth2.authConfig.authorizeContext = window
 		oauth2.authorize(callback: callback)

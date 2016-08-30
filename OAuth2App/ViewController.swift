@@ -31,19 +31,19 @@ class ViewController: NSViewController {
 	
 	// MARK: - Error Handling
 	
-	/** Forwards to `displayError(NSError)`. */
-	func showError(_ error: ErrorProtocol) {
+	/** Forwards to `display(error:)`. */
+	func show(_ error: Error) {
 		if let error = error as? OAuth2Error {
 			let err = NSError(domain: "OAuth2ErrorDomain", code: 0, userInfo: [NSLocalizedDescriptionKey: error.description])
-			displayError(err)
+			display(err)
 		}
 		else {
-			displayError(error as NSError)
+			display(error as NSError)
 		}
 	}
 	
 	/** Alert or log the given NSError. */
-	func displayError(_ error: NSError) {
+	func display(_ error: NSError) {
 		if let window = self.view.window {
 			NSAlert(error: error).beginSheetModal(for: window, completionHandler: nil)
 			label?.stringValue = error.localizedDescription
@@ -68,7 +68,7 @@ class ViewController: NSViewController {
 		label?.isHidden = true
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handleRedirect(_:)), name: NSNotification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: nil)
-		loader.authorize(view.window) { authParams, error in
+		loader.authorize(from: view.window) { authParams, error in
 			self.didAuthorize(with: authParams, or: error)
 		}
 	}
@@ -79,16 +79,16 @@ class ViewController: NSViewController {
 			loader.handleRedirectURL(url)
 		}
 		else {
-			showError(NSError(domain: NSCocoaErrorDomain, code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid notification: did not contain a URL"]))
+			show(NSError(domain: NSCocoaErrorDomain, code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid notification: did not contain a URL"]))
 		}
 	}
 	
-	func didAuthorize(with params: OAuth2JSON?, or error: ErrorProtocol?) {
+	func didAuthorize(with params: OAuth2JSON?, or error: Error?) {
 		NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: nil)
 		
 		if let error = error {
 			button?.title = "Failed. Try Again."
-			showError(error)
+			show(error)
 		}
 		else if let _ = params {
 			nextActionForgetsTokens = true
@@ -118,7 +118,7 @@ class ViewController: NSViewController {
 	func showUserData() {
 		loader.requestUserdata() { dict, error in
 			if let error = error {
-				self.showError(error)
+				self.show(error)
 			}
 			else {
 				if let imgURL = dict?["avatar_url"] as? String {
@@ -146,7 +146,7 @@ class ViewController: NSViewController {
 			loader.oauth2.exchangeCodeForToken(pasted)
 		}
 		else {
-			showError(OAuth2Error.generic("Nothing in the clipboard that I can read"))
+			show(OAuth2Error.generic("Nothing in the clipboard that I can read"))
 		}
 	}
 }
