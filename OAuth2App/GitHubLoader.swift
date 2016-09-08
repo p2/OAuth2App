@@ -30,7 +30,7 @@ class GitHubLoader: DataLoader {
 	
 	
 	/** Perform a request against the GitHub API and return decoded JSON or an NSError. */
-	func request(path: String, callback: ((OAuth2JSON?, Error?) -> Void)) {
+	func request(path: String, callback: @escaping ((OAuth2JSON?, Error?) -> Void)) {
 		oauth2.logger = OAuth2DebugLogger(.trace)
 		let url = baseURL.appendingPathComponent(path)
 		var req = oauth2.request(forURL: url)
@@ -62,7 +62,7 @@ class GitHubLoader: DataLoader {
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(callback: ((_ dict: OAuth2JSON?, _ error: Error?) -> Void)) {
+	func requestUserdata(callback: @escaping ((_ dict: OAuth2JSON?, _ error: Error?) -> Void)) {
 		request(path: "user", callback: callback)
 	}
 }

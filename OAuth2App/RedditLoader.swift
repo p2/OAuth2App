@@ -33,7 +33,7 @@ class RedditLoader: DataLoader {
 	}
 	
 	/** Perform a request against the API and return decoded JSON or an NSError. */
-	func request(path: String, callback: ((OAuth2JSON?, Error?) -> Void)) {
+	func request(path: String, callback: @escaping ((OAuth2JSON?, Error?) -> Void)) {
 		let url = baseURL.appendingPathComponent(path)
 		let req = oauth2.request(forURL: url)
 		
@@ -64,7 +64,7 @@ class RedditLoader: DataLoader {
 	
 	// MARK: - Convenience
 	
-	func requestUserdata(callback: ((_ dict: OAuth2JSON?, _ error: Error?) -> Void)) {
+	func requestUserdata(callback: @escaping ((_ dict: OAuth2JSON?, _ error: Error?) -> Void)) {
 		request(path: "api/v1/me", callback: callback)
 	}
 }
