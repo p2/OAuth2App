@@ -29,6 +29,79 @@ class ViewController: NSViewController {
 	var nextActionForgetsTokens = false
 	
 	
+	// MARK: - Authorization
+	
+	func handleRedirect(_ notification: Notification) {
+		pasteButton?.isHidden = true
+		if let url = notification.object as? URL {
+			label?.stringValue = "Handling redirect..."
+			do {
+				try loader.oauth2.handleRedirectURL(url)
+			}
+			catch let error {
+				show(error)
+			}
+		}
+		else {
+			show(NSError(domain: NSCocoaErrorDomain, code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid notification: did not contain a URL"]))
+		}
+	}
+	
+	@IBAction func forgetTokens(_ sender: NSButton?) {
+		button?.title = "Forgetting..."
+		loader.oauth2.forgetTokens()
+		button?.title = "Load Userdata"
+		pasteButton?.isHidden = true
+		label?.isHidden = false
+	}
+	
+	
+	// MARK: - Data Requests
+	
+	@IBAction func startLoading(_ sender: NSButton?) {
+		if nextActionForgetsTokens {
+			nextActionForgetsTokens = false
+			forgetTokens(sender)
+			return
+		}
+		
+		// show what is happening
+		button?.title = "Authorizing..."
+		button?.isEnabled = false
+		pasteButton?.isHidden = false
+		label?.isHidden = true
+		
+		// config OAuth2
+		loader.oauth2.authConfig.authorizeContext = view.window
+		NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handleRedirect(_:)), name: NSNotification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: nil)
+		
+		// load user data
+		loader.requestUserdata() { dict, error in
+			if let error = error {
+				self.button?.title = "Failed. Try Again."
+				self.show(error)
+			}
+			else {
+				if let imgURL = dict?["avatar_url"] as? String {
+					self.image?.setImageWith(URL(string: imgURL)!)
+				}
+				if let username = dict?["name"] as? String {
+					self.label?.stringValue = "Hello there, \(username)!"
+				}
+				else {
+					self.label?.stringValue = "Failed to fetch your name"
+					NSLog("Fetched: \(dict)")
+				}
+				self.nextActionForgetsTokens = true
+				self.button?.title = "Forget Tokens"
+			}
+			self.button?.isEnabled = true
+			self.pasteButton?.isHidden = true
+			self.label?.isHidden = false
+		}
+	}
+	
+	
 	// MARK: - Error Handling
 	
 	/** Forwards to `display(error:)`. */
@@ -54,88 +127,6 @@ class ViewController: NSViewController {
 	}
 	
 	
-	// MARK: - Authorization
-	
-	@IBAction func requestToken(_ sender: NSButton?) {
-		if nextActionForgetsTokens {
-			nextActionForgetsTokens = false
-			forgetTokens(sender)
-			return
-		}
-		button?.title = "Authorizing..."
-		button?.isEnabled = false
-		pasteButton?.isHidden = false
-		label?.isHidden = true
-		
-		NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handleRedirect(_:)), name: NSNotification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: nil)
-		loader.authorize(from: view.window) { authParams, error in
-			self.didAuthorize(with: authParams, or: error)
-		}
-	}
-	
-	func handleRedirect(_ notification: Notification) {
-		pasteButton?.isHidden = true
-		if let url = notification.object as? URL {
-			loader.handleRedirectURL(url)
-		}
-		else {
-			show(NSError(domain: NSCocoaErrorDomain, code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid notification: did not contain a URL"]))
-		}
-	}
-	
-	func didAuthorize(with params: OAuth2JSON?, or error: Error?) {
-		NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: nil)
-		
-		if let error = error {
-			button?.title = "Failed. Try Again."
-			show(error)
-		}
-		else if let _ = params {
-			nextActionForgetsTokens = true
-			button?.title = "Forget Tokens"
-			label?.stringValue = "Fetching user data..."
-			showUserData()
-		}
-		else {
-			button?.title = "Cancelled. Try Again."
-		}
-		button?.isEnabled = true
-		pasteButton?.isHidden = true
-		label?.isHidden = false
-	}
-	
-	@IBAction func forgetTokens(_ sender: NSButton?) {
-		button?.title = "Forgetting..."
-		loader.oauth2.forgetTokens()
-		button?.title = "Authorize"
-		pasteButton?.isHidden = true
-		label?.isHidden = false
-	}
-	
-	
-	// MARK: - Data Requests
-	
-	func showUserData() {
-		loader.requestUserdata() { dict, error in
-			if let error = error {
-				self.show(error)
-			}
-			else {
-				if let imgURL = dict?["avatar_url"] as? String {
-					self.image?.setImageWith(URL(string: imgURL)!)
-				}
-				if let username = dict?["name"] as? String {
-					self.label?.stringValue = "Hello there, \(username)!"
-				}
-				else {
-					self.label?.stringValue = "Failed to fetch your name"
-					NSLog("Fetched: \(dict)")
-				}
-			}
-		}
-	}
-	
-	
 	// MARK: - Utilities
 	
 	@IBAction func paste(_ sender: AnyObject?) {
@@ -143,7 +134,12 @@ class ViewController: NSViewController {
 		if let pasted = pboard.string(forType: NSPasteboardTypeString) {
 			pasteButton?.isHidden = true
 			label?.isHidden = false
-			loader.oauth2.exchangeCodeForToken(pasted)
+			if let oa2 = loader.oauth2 as? OAuth2CodeGrant {
+				oa2.exchangeCodeForToken(pasted)
+			}
+			else {
+				show(OAuth2Error.generic("The OAuth2 instance is not a code exchange grant, cannot exchange code"))
+			}
 		}
 		else {
 			show(OAuth2Error.generic("Nothing in the clipboard that I can read"))
