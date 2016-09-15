@@ -11,7 +11,7 @@ import Quartz
 import OAuth2
 
 
-let OAuth2AppDidReceiveCallbackNotification = "OAuth2AppDidReceiveCallback"
+let OAuth2AppDidReceiveCallbackNotification = NSNotification.Name(rawValue: "OAuth2AppDidReceiveCallback")
 
 
 class ViewController: NSViewController {
@@ -73,13 +73,19 @@ class ViewController: NSViewController {
 		
 		// config OAuth2
 		loader.oauth2.authConfig.authorizeContext = view.window
-		NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handleRedirect(_:)), name: NSNotification.Name(rawValue: OAuth2AppDidReceiveCallbackNotification), object: nil)
+		NotificationCenter.default.removeObserver(self, name: OAuth2AppDidReceiveCallbackNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(ViewController.handleRedirect(_:)), name: OAuth2AppDidReceiveCallbackNotification, object: nil)
 		
 		// load user data
 		loader.requestUserdata() { dict, error in
 			if let error = error {
-				self.button?.title = "Failed. Try Again."
-				self.show(error)
+				switch error {
+				case OAuth2Error.requestCancelled:
+					self.button?.title = "Cancelled. Try Again."
+				default:
+					self.button?.title = "Failed. Try Again."
+					self.show(error)
+				}
 			}
 			else {
 				if let imgURL = dict?["avatar_url"] as? String {

@@ -25,6 +25,7 @@ class BitBucketLoader: OAuth2DataLoader, DataLoader {
 			"token_uri": "https://bitbucket.org/site/oauth2/access_token",
 			"scope": "account",
 			"redirect_uris": ["ppoauthapp://oauth/callback"],            // app has registered this scheme
+			"keychain_access_group": "BitGroup",
 			"verbose": true,
 		])
 		super.init(oauth2: oauth)

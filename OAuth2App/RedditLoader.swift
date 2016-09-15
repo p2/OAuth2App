@@ -25,11 +25,12 @@ class RedditLoader: OAuth2DataLoader, DataLoader {
 			"token_uri": "https://www.reddit.com/api/v1/access_token",
 			"scope": "identity",                                        // note that reddit uses comma-separated, not space-separated scopes!
 			"redirect_uris": ["ppoauthapp://oauth/callback"],           // app has registered this scheme
-			"parameters": ["duration": "permanent"],
-			"verbose": true,
+		//	"parameters": ["duration": "permanent"],
 		])
 		oauth.authConfig.authorizeEmbedded = true
+		oauth.logger = OAuth2DebugLogger(.trace)
 		super.init(oauth2: oauth)
+		alsoIntercept403 = true
 	}
 	
 	/** Perform a request against the API and return decoded JSON or an Error. */
@@ -45,7 +46,7 @@ class RedditLoader: OAuth2DataLoader, DataLoader {
 						callback(dict, nil)
 					}
 				}
-				else {	
+				else {
 					DispatchQueue.main.async() {
 						callback(nil, OAuth2Error.generic("\(response.response.statusCode)"))
 					}
