@@ -17,14 +17,16 @@ class GoogleLoader: OAuth2DataLoader, DataLoader {
 	public init() {
 		let oauth = OAuth2CodeGrant(settings: [
 			"client_id": "264768155148-edjhk5aclg20o4fgisblc53ne4991oc3.apps.googleusercontent.com",
-			"client_secret": "qkCnyGhWf133Ydf7VVAsdxEn",
+			"client_secret": "oOLKof-XGPi5_iRyG5vsWXdM",
 			"authorize_uri": "https://accounts.google.com/o/oauth2/auth",
 			"token_uri": "https://www.googleapis.com/oauth2/v3/token",
 			"scope": "profile",
 			"redirect_uris": ["urn:ietf:wg:oauth:2.0:oob"],
-			"verbose": true,
 		])
+		oauth.authConfig.authorizeEmbedded = true
+		oauth.logger = OAuth2DebugLogger(.debug)
 		super.init(oauth2: oauth)
+		alsoIntercept403 = true
 	}
 	
 	/** Perform a request against the API and return decoded JSON or an Error. */
