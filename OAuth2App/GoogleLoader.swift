@@ -25,7 +25,7 @@ class GoogleLoader: OAuth2DataLoader, DataLoader {
 		])
 		oauth.authConfig.authorizeEmbedded = true
 		oauth.logger = OAuth2DebugLogger(.debug)
-		super.init(oauth2: oauth)
+		super.init(oauth2: oauth, host: "https://www.googleapis.com")
 		alsoIntercept403 = true
 	}
 	
