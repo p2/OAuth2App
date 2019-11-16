@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		EE0EDD221A39F43F00CE60E7 /* GitHubLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0EDD211A39F43F00CE60E7 /* GitHubLoader.swift */; };
-		EE1391D01AC5A862002C7B18 /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA355841A39AC6500606646 /* OAuth2.framework */; };
-		EE1391D11AC5A862002C7B18 /* OAuth2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEA355841A39AC6500606646 /* OAuth2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EE1C97D02380BAF500FD9E57 /* OAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = EE1C97CF2380BAF500FD9E57 /* OAuth2 */; };
 		EE28D05C1BED46F4001935BC /* RedditLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1391DC1AC5BDA8002C7B18 /* RedditLoader.swift */; };
 		EE28D05E1BED4D29001935BC /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28D05D1BED4D29001935BC /* ServicesViewController.swift */; };
 		EE79F6601BFD57ED00746243 /* GoogleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79F65F1BFD57ED00746243 /* GoogleLoader.swift */; };
@@ -23,54 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EE1391D21AC5A862002C7B18 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = EEE209461942772800736F1A;
-			remoteInfo = OAuth2;
-		};
 		EEA3556E1A39ABF400606646 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EEA355531A39ABF300606646 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EEA3555A1A39ABF300606646;
 			remoteInfo = OAuth2App;
-		};
-		EEA355831A39AC6500606646 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEE209471942772800736F1A;
-			remoteInfo = OAuth2;
-		};
-		EEA355851A39AC6500606646 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEDB8624193FAAE500C4EEA1;
-			remoteInfo = OAuth2iOS;
-		};
-		EEA355871A39AC6500606646 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEE209A219427DFE00736F1A;
-			remoteInfo = "OAuth2 Tests";
-		};
-		EEA355891A39AC9700606646 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = EEE209461942772800736F1A;
-			remoteInfo = OAuth2;
-		};
-		EEC49F3B1C9C2BE200989A18 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 659854461C5B3BEA00237D39;
-			remoteInfo = OAuth2tvOS;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -81,7 +38,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EE1391D11AC5A862002C7B18 /* OAuth2.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,7 +58,6 @@
 		EEA3556D1A39ABF400606646 /* OAuth2AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OAuth2AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA355721A39ABF400606646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEA355731A39ABF400606646 /* OAuth2AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2AppTests.swift; sourceTree = "<group>"; };
-		EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuth2.xcodeproj; path = OAuth2/OAuth2.xcodeproj; sourceTree = "<group>"; };
 		EEA3558C1A39D84F00606646 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EEAC95DC1BEC1B5900670A70 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		EEC49F361C9C2BE100989A18 /* BitBucketLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitBucketLoader.swift; sourceTree = "<group>"; };
@@ -113,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE1391D01AC5A862002C7B18 /* OAuth2.framework in Frameworks */,
+				EE1C97D02380BAF500FD9E57 /* OAuth2 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +89,6 @@
 				EEA3555D1A39ABF300606646 /* OAuth2App */,
 				EEA355701A39ABF400606646 /* OAuth2AppTests */,
 				EEA3555C1A39ABF300606646 /* Products */,
-				EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -190,17 +144,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EEA3557E1A39AC6500606646 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EEA355841A39AC6500606646 /* OAuth2.framework */,
-				EEA355861A39AC6500606646 /* OAuth2.framework */,
-				EEC49F3C1C9C2BE200989A18 /* OAuth2.framework */,
-				EEA355881A39AC6500606646 /* OAuth2Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -216,10 +159,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				EEA3558A1A39AC9700606646 /* PBXTargetDependency */,
-				EE1391D31AC5A862002C7B18 /* PBXTargetDependency */,
 			);
 			name = OAuth2App;
+			packageProductDependencies = (
+				EE1C97CF2380BAF500FD9E57 /* OAuth2 */,
+			);
 			productName = OAuth2App;
 			productReference = EEA3555B1A39ABF300606646 /* OAuth2App.app */;
 			productType = "com.apple.product-type.application";
@@ -249,7 +193,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = Ossus;
 				TargetAttributes = {
 					EEA3555A1A39ABF300606646 = {
@@ -265,21 +209,18 @@
 			};
 			buildConfigurationList = EEA355561A39ABF300606646 /* Build configuration list for PBXProject "OAuth2App" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
 			mainGroup = EEA355521A39ABF300606646;
+			packageReferences = (
+				EE1C97CE2380BAF500FD9E57 /* XCRemoteSwiftPackageReference "OAuth2" */,
+			);
 			productRefGroup = EEA3555C1A39ABF300606646 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = EEA3557E1A39AC6500606646 /* Products */;
-					ProjectRef = EEA3557D1A39AC6500606646 /* OAuth2.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				EEA3555A1A39ABF300606646 /* OAuth2App */,
@@ -287,37 +228,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		EEA355841A39AC6500606646 /* OAuth2.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuth2.framework;
-			remoteRef = EEA355831A39AC6500606646 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EEA355861A39AC6500606646 /* OAuth2.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuth2.framework;
-			remoteRef = EEA355851A39AC6500606646 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EEA355881A39AC6500606646 /* OAuth2Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OAuth2Tests.xctest;
-			remoteRef = EEA355871A39AC6500606646 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EEC49F3C1C9C2BE200989A18 /* OAuth2.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuth2.framework;
-			remoteRef = EEC49F3B1C9C2BE200989A18 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EEA355591A39ABF300606646 /* Resources */ = {
@@ -365,20 +275,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EE1391D31AC5A862002C7B18 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuth2;
-			targetProxy = EE1391D21AC5A862002C7B18 /* PBXContainerItemProxy */;
-		};
 		EEA3556F1A39ABF400606646 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EEA3555A1A39ABF300606646 /* OAuth2App */;
 			targetProxy = EEA3556E1A39ABF400606646 /* PBXContainerItemProxy */;
-		};
-		EEA3558A1A39AC9700606646 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuth2;
-			targetProxy = EEA355891A39AC9700606646 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -398,18 +298,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -432,12 +337,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -445,18 +350,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -473,10 +383,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -485,12 +395,20 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 5.1.0.0;
+				DEVELOPMENT_TEAM = 5XN5A5JYS6;
 				INFOPLIST_FILE = OAuth2App/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.osx.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -499,13 +417,22 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 5.1.0.0;
+				DEVELOPMENT_TEAM = 5XN5A5JYS6;
 				INFOPLIST_FILE = OAuth2App/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.osx.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -523,10 +450,13 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = OAuth2AppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.osx.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OAuth2App.app/Contents/MacOS/OAuth2App";
 			};
 			name = Debug;
@@ -541,11 +471,15 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = OAuth2AppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.ossus.osx.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OAuth2App.app/Contents/MacOS/OAuth2App";
 			};
 			name = Release;
@@ -581,6 +515,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EE1C97CE2380BAF500FD9E57 /* XCRemoteSwiftPackageReference "OAuth2" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:p2/OAuth2.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EE1C97CF2380BAF500FD9E57 /* OAuth2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE1C97CE2380BAF500FD9E57 /* XCRemoteSwiftPackageReference "OAuth2" */;
+			productName = OAuth2;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EEA355531A39ABF300606646 /* Project object */;
 }

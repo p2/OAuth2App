@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
 	/** Gets called when the App launches/opens via URL. */
-	func handleURLEvent(_ event: NSAppleEventDescriptor, withReply reply: NSAppleEventDescriptor) {
+	@objc func handleURLEvent(_ event: NSAppleEventDescriptor, withReply reply: NSAppleEventDescriptor) {
 		if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue {
 			if let url = URL(string: urlString), "ppoauthapp" == url.scheme && "oauth" == url.host {
 				NotificationCenter.default.post(name: OAuth2AppDidReceiveCallbackNotification, object: url)

@@ -31,7 +31,7 @@ class ViewController: NSViewController {
 	
 	// MARK: - Authorization
 	
-	func handleRedirect(_ notification: Notification) {
+	@objc func handleRedirect(_ notification: Notification) {
 		pasteButton?.isHidden = true
 		if let url = notification.object as? URL {
 			label?.stringValue = "Handling redirect..."
@@ -96,7 +96,7 @@ class ViewController: NSViewController {
 				}
 				else {
 					self.label?.stringValue = "Failed to fetch your name"
-					NSLog("Fetched: \(dict)")
+					NSLog("Fetched: \(String(describing: dict))")
 				}
 				self.nextActionForgetsTokens = true
 				self.button?.title = "Forget Tokens"
@@ -136,8 +136,8 @@ class ViewController: NSViewController {
 	// MARK: - Utilities
 	
 	@IBAction func paste(_ sender: AnyObject?) {
-		let pboard = NSPasteboard.general()
-		if let pasted = pboard.string(forType: NSPasteboardTypeString) {
+		let pboard = NSPasteboard.general
+		if let pasted = pboard.string(forType: .string) {
 			pasteButton?.isHidden = true
 			label?.isHidden = false
 			if let oa2 = loader.oauth2 as? OAuth2CodeGrant {
